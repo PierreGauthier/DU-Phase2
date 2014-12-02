@@ -1,0 +1,26 @@
+
+{% comment %}
+	
+	Menu
+	
+	utilise une seule variable:
+		*active pour savoir quel element du menu est actuelement ouvert
+
+{% endcomment %}
+
+
+<ul class="nav nav-pills nav-stacked">
+	<li class=" {% if active == "accueil" %}active{% endif %}"><a href="/">
+		Accueil<span style="float:right;" class="glyphicon glyphicon-home"/></a></li>
+	<li class=" {% if active == "rechercher" %}active{% endif %}"><a href="/stats/">
+		Rechercher<span style="float:right;" class="glyphicon glyphicon-stats"/></a>
+	</li>
+	<li class=" {% if active == "personnes" %}active{% endif %}"><a href="/personnes/">
+		Personnes<span style="float:right;" class="glyphicon glyphicon-user"/></a></li>
+	<li class=" {% if active == "pieces" %}active{% endif %}"><a href="/pieces/">
+		Pièces<span style="float:right;" class="glyphicon glyphicon-book"/></a></li>
+	{% if user.is_authenticated %}
+	<li class=" {% if active == "saisie" %}active{% endif %}"><a href="/saisie/">
+		Saisie<span style="float:right;" class="glyphicon glyphicon-pencil"/></a></li>	
+	{% endif %}
+</ul>

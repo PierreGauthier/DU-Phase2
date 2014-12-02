@@ -1,0 +1,145 @@
+
+{% comment %}
+
+	Template pour les line chart
+			
+	Utilisation :
+		Lui donner identtifiant unique dans chartId 
+		Il suffit de passer une variable metadata définie le champs en abscisse et ceux en ordonné,
+		et une variable data qui contient une liste de dictionnaire.   
+	
+	Exemple :
+		metadata = 
+			{'x' : 'date', 'y' : ['nbSpectateur','nbSpecPremiereLoge','nbSpecParterre']}
+		data = 
+			[	
+				{'date': '1700-01-01', 'nbSpectateur' : 1024, 'nbSpecPremiereLoge' : 453, 'nbSpecParterre' : 732},
+				{'date': '1700-01-02', 'nbSpectateur' : 1234, 'nbSpecPremiereLoge' : 423, 'nbSpecParterre' : 756},
+				{'date': '1700-01-03', 'nbSpectateur' : 124, 'nbSpecPremiereLoge' : 253, 'nbSpecParterre' : 742},
+				{'date': '1700-01-04', 'nbSpectateur' : 2124, 'nbSpecPremiereLoge' : 53, 'nbSpecParterre' : 832},
+				{'date': '1700-01-05', 'nbSpectateur' : 3124, 'nbSpecPremiereLoge' : 453, 'nbSpecParterre' : 752},
+				{'date': '1700-01-06', 'nbSpectateur' : 1240, 'nbSpecPremiereLoge' : 353, 'nbSpecParterre' : 733},
+				{'date': '1700-01-07', 'nbSpectateur' : 124, 'nbSpecPremiereLoge' : 423, 'nbSpecParterre' : 732},
+				{'date': '1700-01-08', 'nbSpectateur' : 924, 'nbSpecPremiereLoge' : 413, 'nbSpecParterre' : 732}
+			]	
+			
+		Une checkbox sera creer par champs y, elle permettera d'afficher ou non cette ligne sur le graphiique		
+		/!\ le champ x doit être des dates
+		
+{% endcomment %}
+
+<style>
+.lineChartArea{{chartId}} {
+  font: 10px sans-serif;
+}
+
+.lineChartAxis path,
+.lineChartAxis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.lineChartAxis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke-width: 1.5px;
+}
+</style>
+
+<div id="lineChartCheckboxArea{{chartId}}">
+</div>
+<div class="lineChartArea{{chartId}}"></div>
+
+<script src="/static/js/d3.min.js"></script>
+<script>
+
+var {{chartId}}data = {{data|safe}};
+var {{chartId}}info = {{metadata|safe}};
+
+var {{chartId}}margin = {top: 40, right: 20, bottom: 30, left: 40},
+    {{chartId}}width = 960 - {{chartId}}margin.left - {{chartId}}margin.right,
+    {{chartId}}height = 300 - {{chartId}}margin.top - {{chartId}}margin.bottom;
+
+var {{chartId}}parseDate = d3.time.format("%Y-%m-%d").parse;
+for (i = 0; i < {{chartId}}data.length; ++i) {
+    {{chartId}}data[i]['date'] = {{chartId}}parseDate({{chartId}}data[i]['date']);
+}
+
+var {{chartId}}x = d3.time.scale()
+		.range([0, {{chartId}}width]);
+
+var {{chartId}}y = d3.scale.linear()
+    .range([{{chartId}}height, 0]);
+
+var {{chartId}}xAxis = d3.svg.axis()
+    .scale({{chartId}}x)
+    .orient("bottom");
+
+var {{chartId}}yAxis = d3.svg.axis()
+    .scale({{chartId}}y)
+    .orient("left");	
+
+var {{chartId}}svg = d3.select(".lineChartArea{{chartId}}").append("svg")
+    .attr("width", {{chartId}}width + {{chartId}}margin.left + {{chartId}}margin.right)
+    .attr("height", {{chartId}}height + {{chartId}}margin.top + {{chartId}}margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + {{chartId}}margin.left + "," + {{chartId}}margin.top + ")");
+		
+{{chartId}}x.domain(d3.extent({{chartId}}data, function(d) { return d[{{chartId}}info.x]; }));
+{{chartId}}y.domain(d3.extent({{chartId}}data, function(d) { return d[{{chartId}}info.y[0]]; }));
+
+{{chartId}}svg.append("g")
+    .attr("class", "x lineChartAxis")
+    .attr("transform", "translate(0," + {{chartId}}height + ")")
+    .call({{chartId}}xAxis);
+
+{{chartId}}svg.append("g")
+    .attr("class", "y lineChartAxis")
+    .call({{chartId}}yAxis)
+  .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text({{chartId}}info.y[0]);
+		
+var {{chartId}}color = ['primary', 'danger', 'warning', 'success', 'info', 'defautl']
+
+{% for y in metadata.y %}
+
+checkbox = '<input type="checkbox" name="{{y}}" onclick="updateLine(\'{{chartId}}line{{y}}\', this)" checked="checked"/><span class="bg-'+{{chartId}}color[{{forloop.counter0}}]+'">{{y}}</span><br/>';
+$('#lineChartCheckboxArea{{chartId}}').append(checkbox);
+
+var {{chartId}}line{{y}} = d3.svg.line()
+    .x(function(d) { return {{chartId}}x(d[{{chartId}}info.x]); })
+    .y(function(d) { return {{chartId}}y(d['{{y}}']); });
+		
+//function {{chartId}}tip{{y}}() {
+	//var m = d3.svg.mouse(this);
+  //d3.select("#{{chartId}}line{{y}}").select("title").text("azerty");
+//}
+		
+{{chartId}}svg.append("path")
+    .datum({{chartId}}data)
+		.attr("id", "{{chartId}}line{{y}}")
+    .attr("class", "line line-"+{{chartId}}color[{{forloop.counter0}}])
+    .attr("d", {{chartId}}line{{y}});
+		//.on("mousemove", {{chartId}}tip{{y}})
+    //.append("title");
+		
+{% endfor %}
+
+function updateLine(id, checkbox) {
+	if(checkbox.checked) {
+		$("#"+id).attr("display","inline");
+	}
+	else {
+		$("#"+id).attr("display","none");
+	}
+}
+		
+</script>

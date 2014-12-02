@@ -1,0 +1,68 @@
+# Fichier YAML pour remplir la classe "Personne" du projet REGITAL
+# ROQUIN Pierre - 2013
+
+# Toutes les personnes doivent être renseignees dans
+# ce meme fichier. Pour chaque nouvelle personne,
+# copiez le texte de "---"(compris) jusqu'à 
+#  ". . ."(compris) puis coller e en-dessous ou au-dessus
+# l d'une autre personne, enfin remplissez les differents
+# champs selon les exemples fournis. Les lignes precedes 
+# d'un "#" sont des commentaires et ne doivent pas etre
+# remplis
+  
+---
+personne:
+  # Date de deces
+  # Structure: "Année-Mois-Jour"
+  # Exemple(mettre les guillemets): "1721-05-15"
+  # Remarque: Pour une date incomplète comme
+  #    16?? mettre 1600-01-01
+  date de decès: 1721-05-15
+  
+  #  Date de naissance
+  # Structure: Année-Mois-Jour
+  # Exemple(mettre les guillemets): "1600-01-01" 
+  # Remarque: Pour une date incomplète comme
+  #    16?? mettre 1600-01-01
+  date de naissance: 1600-01-01
+  
+  # Genre
+  # Structure: M/F (mettre une seule lettre)
+  # Exemple(ne pas mettre de guillemets): M
+  genre: M
+  
+  # Nationalite
+  # Structure: FR/IT (mettre une seule suite de lettres)
+  # Exemple(ne pas mettre de guillemets): IT
+  nationalité: it
+  
+  # Nom
+  # Structure: "Nom de la personne"
+  # Exemple: "Costantini"
+  nom: "Constantini"
+  
+  # Prenom
+  # Structure: "Prenom de la personne"
+  # Exemple: "Jean-Baptiste"
+  prenom: "Jean-Baptiste"
+  
+  # Plus d'informations (anecdotes)
+  # Structure: "Anecdotes sur la personne"
+  # Exemple: "Il jouait Octave"
+  plus dinfo: Il jouait Octave
+  
+  # Pseudonyme
+  # Structure: "Pseudonyme de la personne"
+  # Exemple(mettre les guillemets): "Octave"
+  pseudonyme: Octave
+  
+  # Titre (metier)
+  # Structure: "Titre de la personne"
+  # Exemple(mettre les guillemets): "Acteur, Directeur"
+  titre: Acteur, Directeur
+  
+  # Adresse sur le site Cesar.org.uk
+  # Structure: "Adresse internet correspondante sur CESAR"
+  # Exemple(mettre les guillemets): "http://www.cesar.org.uk/cesar2/people/people.php?fct=edit&person_UOID=309605"
+  uri cesar: http://www.cesar.org.uk/cesar2/people/people.php?fct=edit&person_UOID=309605
+...

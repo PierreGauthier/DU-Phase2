@@ -1,0 +1,78 @@
+﻿#fichier exemple en yaml
+
+# -*- coding: utf8 -*-
+
+
+---
+personne:
+  nom: Alborgheti
+  prenom: Jean
+  date de naissance: 1720-03-12
+  genre: M
+...
+---
+personne:
+  nom: Cicognini
+  prenom: Jean
+  date de naissance: 1720-03-12
+  genre: M
+...
+---
+soirée:
+
+  date: 1717-11-02       # Année-Mois-Jour
+  libellé date reg: "mercordi  2  zug" # Date tel qu'elle est ecrite dans le registe
+  
+  # représentation:
+    # - { titre brenner: "prince jaloux", titre: "fortunade Gielosie", langue: it/fr, auteurs: "cicognini", première représentation: 1717-05-20, position: 1 }
+
+  animation:
+  #type 3:compliment
+    - { type: 3, position: 2, auteur: "Alborgheti", description: "" }
+ 
+  budget:
+  
+    ref registre: "TH-OC-10-78"
+    num page pdf: 1
+      
+    débit:
+      - { libelle: "lista del puruch", libellé: "ordinaire", traduction: "", montant: 18 } # mots-cles ? traduction (it->fr)? dans ce cas : internationalisation
+      - { libelle: "lion", libellé: "animaux", traduction: "", montant: 18 }
+      - { libelle: "chaises", libellé: "accessoire", traduction: "", montant: 18 }
+      - { libelle: "bougies", libellé: "accessoire", traduction: "", montant: 18 }
+      - { libelle: "violon", libellé: "musique", traduction: "", montant: 18 }
+      - { libelle: "danceurs", libellé: "artiste", traduction: "", montant: 18 }
+      - { libelle: "danceurs", libellé: "artiste", traduction: "", montant: 18 }
+
+    billetterie:
+      - { type: "parterre", billets: 52, recette: 208 }
+      - { type: "premières loges", billets: 52, recette: 208 }
+      - { type: "balcon premieres loges", billets: 34, recette: 68 }
+      - { type: "deuxiemes loges", billets: 52, recette: 208 }
+      - { type: "balcon deuxiemes loges", billets: 52, recette: 208 } 
+      - { type: "troisiemes loges", billets: 52, recette: 208 }
+      - { type: "paradis", billets: 52, recette: 208 }
+      - { type: "supplement", billets: 52, recette: 208 }
+      - { type: "personnalités", billets: 52, recette: 208 }
+    
+    
+    total dépenses: 139 #139.7.0
+    montant cachet: 6        # valeur parmi '6' '9' '12' '12.25' '12.5' '13' '13.75' '14' '14.75' '15'
+    montant cachet auteur:  
+    nb total billets vendus: 197
+    # recette billets vendus: 397.1.0
+    
+    # debit derniere soirée: 123.2.5   
+    # total depenses corrigé: 145.2.3
+    # quart pauvre: 96.17.6     # impôt sur la recette
+    # debit initial: 236.40.6    # quart du pauvre + total des dépenses corrigé
+    # reste: 151.5.0       # |recette billets - débit initial (quart du pauvre + total dépenses corrigé)|
+    # credit: 387.1.0
+    # credit final: 31.5.0     #avanza
+    # débit total reg:     
+    # crédit total reg:      
+    # anecdote: |
+        # "description d'une anecdote
+        # sur une ou plusieurs ligne(s)"
+    redacteurs: ["Alborgheti", "Bissoni"]
+...
