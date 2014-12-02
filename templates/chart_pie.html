@@ -1,0 +1,212 @@
+
+{% comment %}
+
+			Template pour les pie chart
+			
+			Utilisation :				
+				Lui donner identtifiant unique dans chartId 
+				Il suffit de passer une variable 
+					* data contenant un dictionnaire nom : liste
+					  la liste contient des dictionnaire champs : valeurs
+					
+				Le premier éléments de ces listes est un élément particulier qui permet de savoir quel
+				champs sert a la repartition, et quels champs servent à la coloration
+				Ce premier élément est un dictionnaire qui doit contenir la clef rep, la clef color
+			
+			Exemple :
+				{
+					'Depense' : [
+						{'rep' : 'val', 'color' : 'depense'},
+						{'val': 7, 'depense' : 'bougie'},
+						{'val': 2, 'depense' : 'musique'},
+						{'val': 1, 'depense' : 'acteurs'},
+						{'val's: 3, 'depense' : 'danseur'},
+						{'val': 2, 'depense' : 'ordinnaire'}
+					],
+					'Langue' : [
+						{'rep' : 'nbJoue', 'color' : 'langue'},
+						{'nbJoue': 10, 'langue' : 'It'},
+						{'nbJoue': 5, 'langue' : 'Fr'},
+					]
+				}
+			Cet exemple creer un diagramme de repartition avec deux boutton radio qui permette
+			d'afficher la repartition des dépense en fonction de leur valeur ou de la langue en 
+			fonction du nombre de fois joué
+				
+				/!\ le champ rep doit être des valeurs numérique
+{% endcomment %}
+
+{% load math_filter %}
+
+<style>
+.pieChartArea{{chartId}} {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 960px;
+  height: 500px;
+  position: relative;
+}
+
+path.slice{
+	stroke-width:2px;
+}
+
+polyline{
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
+}}
+</style>
+
+<div id="pieChartRadioArea{{chartId}}" style="position:relative;top:{{height|div:2|add:-10}}px;left:{{width|div:2|add:-20}}px;z-index:2;width:{{width|div:6}}px" >
+	{% for name,value in data.items %}
+		<input type="radio" name="pieChartOpt{{chartId}}" {% if forloop.first %}checked="checked"{%endif%} onclick="{{chartId}}change({{value}})">{{name}}</input></br>
+	{% endfor %}
+</div>
+<div class="pieChartArea{{chartId}}" style="position:absolute;top:{{height|div:10}}px;left:{{width|div:20}}px;width:{{width}}px;height:{{height}}px"></div>
+
+<script>
+
+	var {{chartId}}width = {{width}},
+    {{chartId}}height = {{height}},
+    {{chartId}}radius = Math.min({{chartId}}width, {{chartId}}height) / 2;
+
+	var {{chartId}}svg = d3.select(".pieChartArea{{chartId}}")
+		.append("svg")
+		.append("g")
+
+	{{chartId}}svg.append("g")
+		.attr("class", "slices");
+	{{chartId}}svg.append("g")
+		.attr("class", "labels");
+	{{chartId}}svg.append("g")
+		.attr("class", "lines");
+
+	var {{chartId}}arc = d3.svg.arc()
+		.outerRadius({{chartId}}radius * 0.8)
+		.innerRadius({{chartId}}radius * 0.4);
+
+	var {{chartId}}outerArc = d3.svg.arc()
+		.innerRadius({{chartId}}radius * 0.9)
+		.outerRadius({{chartId}}radius * 0.9);
+
+	{{chartId}}svg.attr("transform", "translate(" + {{chartId}}width / 2 + "," + {{chartId}}height / 2 + ")");
+
+{% for name,value in data.items %}
+	{% if forloop.first %}{{chartId}}change({{value|safe}});{%endif%}
+{% endfor %}		
+			
+function {{chartId}}change(data) {
+
+	var {{chartId}}info = data[0];
+	data.splice(0,1);
+	
+	var {{chartId}}pie = d3.layout.pie()
+	.sort(null)
+	.value(function(d) {
+		return d[{{chartId}}info.rep];
+	});
+	
+	var colorDomain = [];
+	var total = 0;
+	data.map(function(d) { 
+		if( colorDomain.indexOf(d[{{chartId}}info.color]) < 0) { colorDomain.push(d[{{chartId}}info.color]); }
+		total += d[{{chartId}}info.rep];
+	});
+	
+	var {{chartId}}color = d3.scale.ordinal()
+		.domain(colorDomain)
+		.range(["svg-primary", "svg-warning", "svg-danger", "svg-success", "svg-info", "svg-default"]);
+	
+	var {{chartId}}key = function(d){ return d.data[{{chartId}}info.color]; };
+	
+	/* ------- PIE SLICES -------*/
+	var slice = {{chartId}}svg.select(".slices").selectAll("path.slice")
+		.data({{chartId}}pie(data), {{chartId}}key);
+
+	slice.enter()
+		.insert("path")
+		.attr("class", function(d) { return "slice " + {{chartId}}color(d.data[{{chartId}}info.color]);})
+		.append("svg:title")
+   	.text(function(d) { return Math.round(d.data[{{chartId}}info.rep]*1000/total)/10 + '% (' + d.data[{{chartId}}info.rep] + ")"; });
+
+	slice		
+		.transition().duration(1000)
+		.attrTween("d", function(d) {
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+			return function(t) {
+				return {{chartId}}arc(interpolate(t));
+			};
+		})
+
+	slice.exit()
+		.remove();
+
+	/* ------- TEXT LABELS -------*/
+	var text = {{chartId}}svg.select(".labels").selectAll("text")
+		.data({{chartId}}pie(data), {{chartId}}key);
+
+	text.enter()
+		.append("text")
+		.attr("dy", ".35em")
+		.text(function(d) {
+			return d.data[{{chartId}}info.color];
+		});
+	
+	function midAngle(d){
+		return d.startAngle + (d.endAngle - d.startAngle)/2;
+	}
+
+	text.transition().duration(1000)
+		.attrTween("transform", function(d) {
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+			return function(t) {
+				var d2 = interpolate(t);
+				var pos = {{chartId}}outerArc.centroid(d2);
+				pos[0] = {{chartId}}radius * (midAngle(d2) < Math.PI ? 1 : -1);
+				return "translate("+ pos +")";
+			};
+		})
+		.styleTween("text-anchor", function(d){
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+			return function(t) {
+				var d2 = interpolate(t);
+				return midAngle(d2) < Math.PI ? "start":"end";
+			};
+		});
+
+	text.exit()
+		.remove();
+
+	/* ------- SLICE TO TEXT POLYLINES -------*/
+
+	var polyline = {{chartId}}svg.select(".lines").selectAll("polyline")
+		.data({{chartId}}pie(data), {{chartId}}key);
+	
+	polyline.enter()
+		.append("polyline");
+
+	polyline.transition().duration(1000)
+		.attrTween("points", function(d){
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+			return function(t) {
+				var d2 = interpolate(t);
+				var pos = {{chartId}}outerArc.centroid(d2);
+				pos[0] = {{chartId}}radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+				return [{{chartId}}arc.centroid(d2), {{chartId}}outerArc.centroid(d2), pos];
+			};			
+		});
+	
+	polyline.exit()
+		.remove();
+};
+
+</script>

@@ -1,0 +1,89 @@
+{% extends "page_base.html" %}
+
+{% comment %}
+
+	Page chargée de listé des éléments en fournissant un système de pagination 
+	et de recherche par première lettre
+	
+	Les différentes varaibles qu'elle utilise sont:
+		* link : le lien vers le détail des éléments listé
+		* list : un dictionnaire id -> element
+							élement étant ce qui sera afficher dans la liste
+							et id est ce qui sera concaté a like pour créer le lien
+							vers le détail de l'élément
+		
+	Les pages de détails doivent étre située à {{link}}{{id}}
+
+{% endcomment %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+<center>
+<ul class="pagination pagination-sm">
+  <li {% if start_with == '' %}class="active"{%endif%}><a href="javascript:startwith('');">Tout</a></li>
+</ul>
+<ul class="pagination pagination-sm">
+	{% for l in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+  	{% if start_with == l %}
+			<li class='active'><a href="javascript:startwith('{{l}}');">{{l}}</a></li>
+		{% else %}
+			<li><a href="javascript:startwith('{{l}}');">{{l}}</a></li>
+		{% endif %}
+	{% endfor %}
+</ul>
+</center>
+
+<table class="table table-striped">
+{% for id,item in list %}
+	<tr><th><a href="{{link}}{{id}}">{{item}}</a></th></tr>
+{% endfor %}
+</table>
+
+<center>
+<ul class="pagination pagination-sm">
+{% if page_num > 1 %}
+	<li><a  href="javascript:goToPage('1');">1</a></li>
+	{% if page_num < page_nb and page_nb > 3 %}		
+		<li><a>...</a></li>
+	{% endif %}
+	<li><a href="javascript:prevPage();">&laquo;</a></li>
+{% endif %}
+	<li class='active'><a>{{page_num}}</a></li>
+{% if page_num < page_nb %}
+	<li><a href="javascript:nextPage();">&raquo;</a></li>
+	{% if page_num < page_nb and page_nb > 3 %}
+		<li><a>...</a></li>	
+	{% endif %}	
+	<li><a href="javascript:goToPage('{{page_nb}}');">{{page_nb}}</a></li>
+{% endif %}
+</ul>
+</center>
+
+<form method="POST" action="{{link}}" id="filter_form">{% csrf_token %} 
+	<input type="hidden" name="start_with" id="start_with" value="{{start_with}}"/>
+	<input type="hidden" name="page_num" id="page_num" value="{{page_num}}"/>
+</form>
+
+<script>	
+	function startwith(letter) {
+		$('#start_with').val(letter);
+		$('#page_num').val(1);
+		$('#filter_form').submit();
+	}
+	
+	function goToPage(num) {		
+		$('#page_num').val(num);
+		$('#filter_form').submit();
+	}
+	
+	function nextPage() {
+		goToPage({{page_num}}+1);
+	}	
+	function prevPage() {
+		goToPage({{page_num}}-1);
+	}
+</script>
+
+{% endblock %}

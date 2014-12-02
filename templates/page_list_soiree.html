@@ -1,0 +1,16 @@
+{% extends "page_base.html" %}
+
+{% comment %}
+
+	Ce template définie la page de liste des soirée, pour cela in inclut simplement le
+	template calendar
+
+{% endcomment %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+{% include "chart_calendar.html" %}
+
+{% endblock %}
