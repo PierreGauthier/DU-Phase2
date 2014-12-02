@@ -1,0 +1,69 @@
+
+{% comment %}
+
+	Ce template gère les formulaires issus d'un model_form_factory
+	
+	les variable utilisées sont :
+		* formset_list : une liste de formulaires issus de model_from_factory
+		* formId : identifiant du formulaire (pour eviter des soucis lorque que 
+								plusieurs formulaires sont utilisés sur la même page)
+		* previous_values : est optionel, il peut contenir un dictionnaire nom: valeur
+												qui permet de preremplir le formulaire (pour ne pas perdre les
+												valeur en cas d'erreur à la validation par exemple)		
+
+{% endcomment %}
+
+<link href="/static/css/datepicker.css" rel="stylesheet"> 
+
+<div id="{{alertZoneId}}">
+</div>
+
+<form id='{{formId}}' class="form-horizontal" method="post" action="{{action}}"> {% csrf_token %} 
+{% block form %}
+{% for nom,formset in formset_list.items %} 
+  {{ formset.management_form }} 
+    {% for form in formset %}
+			<div class="form-inline row" style="margin-bottom: 0.5em;text-valign: bottom;"> 
+	      <div class="col-md-2 control-label">{{ form.label_tag }}</div>
+				<div class="col-md-10" style="margin-bottom: 0.5em;text-valign: bottom;">
+					{% for field in form|dictsort:"value" %} {{ field }} {% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+{% endfor %} 
+
+{% endblock %}
+
+	<input type="hidden" name="{{formId}}_id" value="" />
+	<input type="hidden" name="other_information" value="" />
+
+	<button class="btn btn-primary" type="submit" id='{{formId}}Button'>Envoyer</button> 
+</form>
+
+<script src="/static/js/bootstrap-datepicker.js"></script> 
+<script>
+
+$(function(){ 
+
+{% for date_picker_id in date_picker_id_list %} 
+	$('#{{ date_picker_id }}').datepicker({format: 'yyyy-mm-dd'}).data('datepicker');
+{% endfor %}
+
+{% load type_filter %}
+
+/*Set the previous filled value */
+{% for formName,values in previous_values.items %} {% if formName == formId %}
+	{% for name,value in values.items %}
+		{% if value|type == 'list' %} {% for selectedField in value %} setValue('{{name}}','{{ selectedField }}'); {% endfor %}
+		{% elif value|type == 'date' %} setValue('{{name}}','{{ value|date:"Y-m-d" }}'); 
+		{% else %} setValue('{{name}}','{{ value }}');
+		{% endif %}
+		{% if name == 'date' %}$('[name=date]').trigger('keyup');{% endif %}		
+	{% endfor %}
+{% endif %} {% endfor %}
+
+});
+	
+</script>
+
+<script src="/static/js/{{ specific_function }}"></script> 

@@ -1,0 +1,20 @@
+
+{% comment %}
+
+	Ce template gère de manère autonome le fil d'arianne
+
+{% endcomment %}
+
+{% load arianne_tags %}
+
+<div class="well row" style="opacity:0.7; z-index:100; position:relative; border:none; padding:0.25em; height:3em;">
+
+<ol class="breadcrumb col-md-9" style="margin-top:0px;height:2.5em;overflow:hidden;">
+  {% generate_arianne title %}
+</ol>
+
+<form class="col-md-3 globalSeach" style="margin-top:0.25em;" data-toggle="tooltip" data-placement="auto" title="Entrez une date, un nom d'un personne ou une pièce">
+  <input type="text" name="globalSearchInput" class="input-sm form-control" placeholder="Rechercher"/>
+</form>
+</div>
+<script>$('.globalSeach').tooltip();</script>

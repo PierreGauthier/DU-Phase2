@@ -1,0 +1,123 @@
+﻿#fichier exemple en yaml
+# commenter chaque ligne pour donner les clefs de remplissage 
+
+# -*- coding: utf8 -*-
+
+---
+soirée:
+  date: 1717-11-02  # Année-Mois-Jour
+  libellé date reg: "mercordi  2  Zug∞"
+  ref_registre: "TH-OC-10-78"
+  num_page_pdf: 1
+  representations:
+    - { titre_brenner: "prince jaloux", titre: "fortunade Gielosie", langue: it/fr, auteur: "cicognini", premiere_representation: 1717-05-20 }
+    - { titre_brenner: "prince jaloux", titre: "fortunade Gielosie", langue: it/fr, auteur: "cicognini", premiere_representation: 1717-05-20 }
+  animations:
+    - { type: "compliment", position: 2, auteur: "Alborgheti", description: "" }
+    
+  budget:
+      
+    depenses:
+      total_depenses: 139.7.0
+      montant_du_cachet: 6     # valeur parmi '6' '9' '12' '12¼' '12½' '13' '13¾' '14' '14¾' '15'
+      part_des_auteurs:    # montant du cachet aux auteurs (par auteur ?) - s'ajoute à la "masse salariale"
+ # (montant_du_cachet * nbre_cachets) + (part_des_auteurs * nbre_auteurs) = montant des salaires
+ # Attention : en cas de solde négatif, les cachets déclarés sont versés au cours de la soirée suivante (avec solde positif) !
+      detail:
+        - { libelle: "lista del puruch", type: "ordinaire", traduction: "", mots_cles: "", cout: 18 } # mots-cles ? traduction (it->fr)? dans ce cas : internationalisation
+        - { libelle: "lion", type: "animaux", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "chaises", type: "accessoire", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "bougies", type: "accessoire", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "violon", type: "musique", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "danceurs", type: "artiste", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "danceurs", type: "artiste", traduction: "", mots_cles: "", cout: 18 }
+
+    billeterie:
+      parterre: { billets: 52, recette: 208 }
+      premieres_loges: { billets: 52, recette: 208 }
+      balcon_premieres_loges: { billets: 34, recette: 68 }
+      deuxiemes_loges: { billets: 52, recette: 208 }
+      balcon_deuxiemes_loges: { billets: 52, recette: 208 } 
+      troisiemes_loges: { billets: 52, recette: 208 }
+      paradis: { billets: 52, recette: 208 }
+      supplement:  { billets: 52, recette: 208 }
+      #prima_loggia: { billets: 52, recette: 208 }
+      #seconda_loggia: { billets: 52, recette: 208 }
+      personnalites: { billets: 52, recette: 208 }
+      nb_total_billets_vendus: 197
+      recette_billets_vendus: 397.1.0
+    
+    debit_derniere_soiree:    # dette héritée de la précédente soirée, vide sinon. 
+    total_depenses_corrige:  # dépenses + débit dernière soirée
+    quart_pauvre: 96.17.6 # impôt sur la recette (calculé comment ?)
+    debit_initial: 236.40.6 # quart du pauvre + total des dépenses corrigé
+    reste: 151.5.0  # |recette billets - débit initial (quart du pauvre + total dépenses corrigé)|
+    credit: 387.1.0
+    credit_final_(avanza): 31.5.0
+    r_debit_total:  # ???
+    r_credit_total:   # ???
+    anecdote: |
+        "description d'une anecdote
+        sur une ou plusieurs ligne(s)"
+    redacteurs: ["Alborgheti", "Bissoni"]
+...
+
+
+---
+soirée:
+  date: 1717-12-02  # Année-Mois-Jour
+  libelle_date_reg: "mercordi  2  Zug∞"
+  ref_registre: "TH-OC-10-78"
+  num_page_pdf: 1
+  representations:
+    - { titre_brenner: "prince jaloux", titre: "fortunade Gielosie", langue: it/fr, auteur: "cicognini", premiere_representation: 1717-05-20 }
+    - { titre_brenner: "prince jaloux", titre: "fortunade Gielosie", langue: it/fr, auteur: "cicognini", premiere_representation: 1717-05-20 }
+  animations:
+    - { type: "compliment", position: 2, auteur: "Alborgheti", description: "" }
+    
+  budget:
+      
+    depenses:
+      total_depenses: 139.7.0
+      montant_du_cachet: 6     # valeur parmi '6' '9' '12' '12¼' '12½' '13' '13¾' '14' '14¾' '15'
+      part_des_auteurs:    # montant du cachet aux auteurs (par auteur ?) - s'ajoute à la "masse salariale"
+ # (montant_du_cachet * nbre_cachets) + (part_des_auteurs * nbre_auteurs) = montant des salaires
+ # Attention : en cas de solde négatif, les cachets déclarés sont versés au cours de la soirée suivante (avec solde positif) !
+      detail:
+        - { libelle: "lista del puruch", type: "ordinaire", traduction: "", mots_cles: "", cout: 18 } # mots-cles ? traduction (it->fr)? dans ce cas : internationalisation
+        - { libelle: "lion", type: "animaux", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "chaises", type: "accessoire", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "bougies", type: "accessoire", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "violon", type: "musique", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "danceurs", type: "artiste", traduction: "", mots_cles: "", cout: 18 }
+        - { libelle: "danceurs", type: "artiste", traduction: "", mots_cles: "", cout: 18 }
+
+    billeterie:
+      parterre: { billets: 52, recette: 208 }
+      premieres_loges: { billets: 52, recette: 208 }
+      balcon_premieres_loges: { billets: 34, recette: 68 }
+      deuxiemes_loges: { billets: 52, recette: 208 }
+      balcon_deuxiemes_loges: { billets: 52, recette: 208 } 
+      troisiemes_loges: { billets: 52, recette: 208 }
+      paradis: { billets: 52, recette: 208 }
+      supplement:  { billets: 52, recette: 208 }
+      #prima_loggia: { billets: 52, recette: 208 }
+      #seconda_loggia: { billets: 52, recette: 208 }
+      personnalites: { billets: 52, recette: 208 }
+      nb_total_billets_vendus: 197
+      recette_billets_vendus: 397.1.0
+    
+    debit_derniere_soiree:    # dette héritée de la précédente soirée, vide sinon. 
+    total_depenses_corrige:  # dépenses + débit dernière soirée
+    quart_pauvre: 96.17.6 # impôt sur la recette (calculé comment ?)
+    debit_initial: 236.40.6 # quart du pauvre + total des dépenses corrigé
+    reste: 151.5.0  # |recette billets - débit initial (quart du pauvre + total dépenses corrigé)|
+    credit: 387.1.0
+    credit_final_(avanza): 31.5.0
+    r_debit_total:  # ???
+    r_credit_total:   # ???
+    anecdote: |
+        "description d'une anecdote
+        sur une ou plusieurs ligne(s)"
+    redacteurs: ["Alborgheti", "Bissoni"]
+...

@@ -1,0 +1,151 @@
+// My CSS
+
+.tooltip-inner {white-space:pre-wrap;}
+
+.circle {
+	width:100px; 
+	height:100px; 
+	padding-top:1em;
+	border-radius:50px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.circle-lg {
+	width:200px; 
+	height:200px;
+	padding-top:1em; 
+	border-radius:100px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.circle-sm {
+	width:50px; 
+	height:50px;
+	padding-top:1em; 
+	border-radius:25px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.square {
+	width:100px; 
+	border-radius:2px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.square-lg {
+	width:200px; 
+	border-radius:4px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.square-sm {
+	width:50px; 
+	border-radius:1px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.svg-default {fill: #cccccc;}
+.svg-default:hover {fill: #999999;}
+.svg-primary {fill: #428bca;}
+.svg-primary:hover {fill: #3071a9;}
+.svg-warning {fill: #f0ad4e;}
+.svg-warning:hover {fill: #ed9c28;}
+.svg-danger {fill: #d9534f;}
+.svg-danger:hover {fill: #d2322d;}
+.svg-success {fill: #5cb85c;}
+.svg-success:hover {fill: #47a447;}
+.svg-info {fill: #5bc0de;}
+.svg-info:hover {fill: #39b3d7;}
+
+.bg-default {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.bg-default:hover {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+.bg-primary {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.bg-primary:hover {
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+.bg-warning {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.bg-warning:hover {
+  color: #ffffff;
+  background-color: #ed9c28;
+  border-color: #d58512;
+}
+.bg-danger {
+  color: #ffffff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.bg-danger:hover {
+  color: #ffffff;
+  background-color: #d2322d;
+  border-color: #ac2925;
+}
+.bg-success {
+  color: #ffffff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.bg-success:hover {
+  color: #ffffff;
+  background-color: #47a447;
+  border-color: #398439;
+}
+.bg-info {
+  color: #ffffff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.bg-info:hover {
+  color: #ffffff;
+  background-color: #39b3d7;
+  border-color: #269abc;
+}
+
+.svg .svg-default {fill: #cccccc;}
+.svg .svg-default:hover {fill: #999999;}
+.svg .svg-primary {fill: #428bca;}
+.svg .svg-primary:hover {fill: #3071a9;}
+.svg .svg-warning {fill: #f0ad4e;}
+.svg .svg-warning:hover {fill: #ed9c28;}
+.svg .svg-danger {fill: #d9534f;}
+.svg .svg-danger:hover {fill: #d2322d;}
+.svg .svg-success {fill: #5cb85c;}
+.svg .svg-success:hover {fill: #47a447;}
+.svg .svg-info {fill: #5bc0de;}
+.svg .svg-info:hover {fill: #39b3d7;}
+
+.line-default {stroke: #cccccc;}
+.line-default:hover {stroke: #999999;}
+.line-primary {stroke: #428bca;}
+.line-primary:hover {stroke: #3071a9;}
+.line-warning {stroke: #f0ad4e;}
+.line-warning:hover {stroke: #ed9c28;}
+.line-danger {stroke: #d9534f;}
+.line-danger:hover {stroke: #d2322d;}
+.line-success {stroke: #5cb85c;}
+.line-success:hover {stroke: #47a447;}
+.line-info {stroke: #5bc0de;}
+.line-info:hover {stroke: #39b3d7;}
