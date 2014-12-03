@@ -9,6 +9,27 @@
 
 {% block content %}
 
+	<style type="text/css">
+		html,body {  
+			overflow:hidden;  
+		}
+		#cone path {
+    	fill: #ff8d2a;
+		}
+		#progess_bar path {
+    	fill: #63cdff;
+		}
+		#worksign path {
+    	fill: #ff776d;
+		}
+		h1 {
+    	font-size: 4em;
+		}
+		h2 {
+    	color: #aaaaaa;
+		}
+	</style>
+
 	<div class="ui basic test large modal transition" >
 		<center>
 			<h1 class="header">Le Chantier Communicant</h1>
@@ -17,62 +38,80 @@
     <div class="content">
       <div class="ui center aligned grid">
       	<div class="five wide column">
-      		<i class="lab icon massive"></i><br><br>
+      		<img id="cone" class="svg" src="/static/images/cone.svg"/><br><br>
       		Est civitatibus discrevimus ut Nino civitatibus Osdroenam civitatibus vetere hac Samosata amplis nunc civitatibus post Hierapoli Samosata adsurgit adsurgit civitatibus inlustris post quam Hierapoli hac clementer Osdroenam quam quam quam.
       	</div>
       	<div class="five wide column">
-      		<i class="warning sign icon massive"></i><br><br>
+      		<img id="progess_bar" class="svg" src="/static/images/progress9.svg"/></i><br><br>
       		Humatur Publicola Reguli et alitur erubesceret aerario absentia adultae cum subsidiis Scipionis subsidiis uxor et uxor Valerius Reguli liberis adultae.
       	</div>
       	<div class="five wide column">
-      		<i class="world icon massive"></i><br><br>
-      	Conpingerentur praefectum Chilo emersit ea ut ea Olybrium unde et et negotio Olybrium ea et quos Sericus palaestrita autem conpingerentur aruspex rapti palaestrita funditabat Asbolius vincula Maxima Campensis Olybrium tali hi Chilo hi Sericus Maxima funditabat praefectum rapti praefectum vitamque.
+      		<img id="worksign" class="svg" src="/static/images/worksign.svg"/><br><br>
+      		Conpingerentur praefectum Chilo emersit ea ut ea Olybrium unde et et negotio Olybrium ea et quos Sericus palaestrita autem conpingerentur aruspex rapti palaestrita funditabat Asbolius vincula Maxima Campensis Olybrium tali hi Chilo hi Sericus Maxima funditabat praefectum rapti praefectum vitamque.
       	</div>
       </div>
     </div>
     <div class="actions">
     	<div class="ui center aligned grid">
-      	<div class="five wide column"><div class="ui blue basic inverted massive button">Concept 1</div></div>
-      	<div class="five wide column"><div class="ui blue basic inverted massive button">Concept 2</div></div>
-      	<div class="five wide column"><div class="ui blue basic inverted massive button">Concept 3</div></div>
+      	<div class="five wide column"><div class="ui orange basic inverted massive button" onclick="showc1();">Concept 1</div></div>
+      	<div class="five wide column"><div class="ui blue basic inverted massive button" onclick="showc2();">Concept 2</div></div>
+      	<div class="five wide column"><div class="ui red basic inverted massive button" onclick="showc3();">Concept 3</div></div>
       </div>
     </div>
   </div>
-
-	<div class="ui grid" style="background-image:url(/static/rue2.jpg);background-repeat: no-repeat; background-size: 100% 100%; ">
-		{% for r in data %}
-	    <div class="row">
-	    	{% for c in r %}
-	    		{% if forloop.parentloop.counter0|divisibleby:2 %}
-	    			{% if forloop.counter0|divisibleby:2 %}
-		    			<div class="column">
-		    		{% else %} 
-		    			<div class="column black" style="opacity: 0.2">
-		    		{% endif %}
-	    		{% else %}
-		    		{% if forloop.counter0|divisibleby:2 %}
-		    			<div class="column black" style="opacity: 0.2">
-		    		{% else %} 
-		    			<div class="column">
-		    		{% endif %}
-	    		{% endif %}
-	    			<br/>
-	    				<!--({{ forloop.parentloop.counter0 }},{{ forloop.counter0 }})-->
-	    				{% if c != '' %}
-	    					<img src="/static/{{c}}" onMouseOver="$(this).transition('pulse');"/>
-	    				{% endif %}
-	    			<br/>
-			    </div>
-				{% endfor %}
-	    </div>
-		{% endfor %}
-	</div>
-	
-</script>
+  
+  <div class="concept concept1">{% include "concept1.html" %}</div>
+  <div class="concept concept2 hide">{% include "concept2.html" %}</div>
+  <div class="concept concept3 hide">{% include "concept3.html" %}</div>
 	
 	<script>
 	
+	 function showc1() {
+	   $('.concept2').hide();
+	   $('.concept3').hide();
+	   $('.concept1').show(); 
+	 }
+	 
+	 function showc2() {
+	   $('.concept1').hide();
+	   $('.concept3').hide();
+	   $('.concept2').show(); 
+	 }
+	 
+	 function showc3() {
+	   $('.concept1').hide();
+	   $('.concept2').hide();
+	   $('.concept3').show(); 
+	 }
+	
 		$(function() {
+			
+		/*
+     * Replace all SVG images with inline SVG
+     */
+      $('img.svg').each(function(){
+          var $img = jQuery(this);
+          var imgID = $img.attr('id');
+          var imgClass = $img.attr('class');
+          var imgURL = $img.attr('src');
+          jQuery.get(imgURL, function(data) {
+              // Get the SVG tag, ignore the rest
+              var $svg = jQuery(data).find('svg');
+              // Add replaced image's ID to the new SVG
+              if(typeof imgID !== 'undefined') {
+                  $svg = $svg.attr('id', imgID);
+              }
+              // Add replaced image's classes to the new SVG
+              if(typeof imgClass !== 'undefined') {
+                  $svg = $svg.attr('class', imgClass+' replaced-svg');
+              }
+              // Remove any invalid XML tags as per http://validator.w3.org
+              $svg = $svg.removeAttr('xmlns:a');
+              // Replace image with new SVG
+              $img.replaceWith($svg);
+          }, 'xml');
+      });
+      
       $('.basic.test.modal').modal('show');
    });
 		

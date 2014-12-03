@@ -6,15 +6,12 @@ from django.template import RequestContext
 def home(request):
     
     data = []
-    for i in range(16):
-        tmp = []
-        for j in range(16):
-            tmp.append('')
-        data.append(tmp)
         
-    data[5][6] = '!!!'
-    data[0][0] = '..'
-    data[11][11] = 'plot1.png'
+    # (x,y,id,fichier svg,scale (%), rotation (deg), popup info, color)
+    data.append((3,4,'car','cartop.svg',0.20,70,'<h3>titre</h3><p>Salut</a>','#63cdff'))
+    data.append((5,10,'cone','cone.svg',0.50,0,'<h3>plot</h3>','#ff8d2a'))
+    data.append((5,9,'cone2','cone.svg',0.50,0,'<h3>plot</h3>','#ff8d2a'))
+    data.append((4,8,'cone3','cone.svg',0.50,0,'<h3>plot</h3>','#ff8d2a'))
         
     return render_to_response('page_choixconcept.html', {'title':'Phase 2', 
     'data':data
