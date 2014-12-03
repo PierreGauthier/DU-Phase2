@@ -1,0 +1,30 @@
+{%comment%}
+
+	Page de base, toutes les autres page sont une extension de celle-ci
+	
+	Lorsque que l'on extend ce template, on peut redéfinir deux block
+		Title : le titre de la page
+		Content : le contenu de la page
+
+{%endcomment%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}Base page{% endblock %}</title>
+  
+  <link rel="stylesheet" type="text/css" class="ui" href="/static/semantic/semantic.min.css">
+  <script src="/static/jquery.js"></script>
+  <script src="/static/semantic/semantic.min.js"></script>
+	
+</head>
+
+<body>   
+	{% block content %}{% endblock %}
+</body>
+
+</html>

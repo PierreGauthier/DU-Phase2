@@ -1,0 +1,51 @@
+{% comment %}
+
+Ce template regroupe tout le code nécessaire à l'utilisation d'un modal, 
+il utilise les variables suivante :	
+		* modalTitle
+		* modalId
+		* modalContent
+		
+	Deux fonctions javascript sont definie : 
+		* toogle{{modalId}}			-> affiche/cache le modal
+		* addTo{{modalId}}			-> ajoute/modifie le contenu du modal
+
+{% endcomment %}
+
+<!-- Modal -->
+<div id="{{modalId}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="myModalLabel">{{modalTitle}}</h3>
+    </div>
+    <div class="modal-body" id="modalContent{{modalId}}">
+      {% if modalContent %}
+        {{ modalContent }}
+      {% else %}
+        <div class="progress progress-striped active">
+          <div class="progress-bar"  role="progressbar" style="width: 100%">
+            <span class="sr-only">Searching ...</span>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+		{% if modalFoot %}
+    <div class="modal-footer">
+      <button type="button" class="btn" data-dismiss="modal">Fermer</button>
+    </div>
+		{% endif %}
+  </div>
+</div>  
+</div>
+
+<script>    
+    function toogle{{modalId}}() {
+      $('#{{modalId}}').modal('toggle')
+    }
+    
+    function addTo{{modalId}}(content) {
+      document.getElementById('modalContent{{modalId}}').innerHTML = content;
+    }    
+</script>
+

@@ -1,0 +1,81 @@
+{% extends "page_base.html" %}
+
+{% comment %}
+
+
+{% endcomment %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+	<div class="ui basic test large modal transition" >
+		<center>
+			<h1 class="header">Le Chantier Communicant</h1>
+	  	<h2>Présenation Phase 2</h2>
+	  </center>
+    <div class="content">
+      <div class="ui center aligned grid">
+      	<div class="five wide column">
+      		<i class="lab icon massive"></i><br><br>
+      		Est civitatibus discrevimus ut Nino civitatibus Osdroenam civitatibus vetere hac Samosata amplis nunc civitatibus post Hierapoli Samosata adsurgit adsurgit civitatibus inlustris post quam Hierapoli hac clementer Osdroenam quam quam quam.
+      	</div>
+      	<div class="five wide column">
+      		<i class="warning sign icon massive"></i><br><br>
+      		Humatur Publicola Reguli et alitur erubesceret aerario absentia adultae cum subsidiis Scipionis subsidiis uxor et uxor Valerius Reguli liberis adultae.
+      	</div>
+      	<div class="five wide column">
+      		<i class="world icon massive"></i><br><br>
+      	Conpingerentur praefectum Chilo emersit ea ut ea Olybrium unde et et negotio Olybrium ea et quos Sericus palaestrita autem conpingerentur aruspex rapti palaestrita funditabat Asbolius vincula Maxima Campensis Olybrium tali hi Chilo hi Sericus Maxima funditabat praefectum rapti praefectum vitamque.
+      	</div>
+      </div>
+    </div>
+    <div class="actions">
+    	<div class="ui center aligned grid">
+      	<div class="five wide column"><div class="ui blue basic inverted massive button">Concept 1</div></div>
+      	<div class="five wide column"><div class="ui blue basic inverted massive button">Concept 2</div></div>
+      	<div class="five wide column"><div class="ui blue basic inverted massive button">Concept 3</div></div>
+      </div>
+    </div>
+  </div>
+
+	<div class="ui grid" style="background-image:url(/static/rue2.jpg);background-repeat: no-repeat; background-size: 100% 100%; ">
+		{% for r in data %}
+	    <div class="row">
+	    	{% for c in r %}
+	    		{% if forloop.parentloop.counter0|divisibleby:2 %}
+	    			{% if forloop.counter0|divisibleby:2 %}
+		    			<div class="column">
+		    		{% else %} 
+		    			<div class="column black" style="opacity: 0.2">
+		    		{% endif %}
+	    		{% else %}
+		    		{% if forloop.counter0|divisibleby:2 %}
+		    			<div class="column black" style="opacity: 0.2">
+		    		{% else %} 
+		    			<div class="column">
+		    		{% endif %}
+	    		{% endif %}
+	    			<br/>
+	    				<!--({{ forloop.parentloop.counter0 }},{{ forloop.counter0 }})-->
+	    				{% if c != '' %}
+	    					<img src="/static/{{c}}" onMouseOver="$(this).transition('pulse');"/>
+	    				{% endif %}
+	    			<br/>
+			    </div>
+				{% endfor %}
+	    </div>
+		{% endfor %}
+	</div>
+	
+</script>
+	
+	<script>
+	
+		$(function() {
+      $('.basic.test.modal').modal('show');
+   });
+		
+	</script>
+
+{% endblock %}

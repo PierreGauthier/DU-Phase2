@@ -1,0 +1,217 @@
+{% extends "page_base.html" %}
+
+{% comment %}
+
+	Page chargée d'afficher les informations concernant une soirée
+	
+	Elle prend en paramètre une soirée dans la varaible 
+		* soireeinfos
+
+{% endcomment %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+{% load currency_filter %}
+
+<div class="row" style="margin-left:1%;">
+	<div class="col-md-12"  style="text-align:center">
+		<h2><b>{{soireeinfos}}</b>
+		{% if user.is_authenticated %}
+			<div style="float:right">
+			<a href="/saisie/update/soiree/{{soireeinfos.id}}">
+				<span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="auto" 
+					title="Modifier les informations de cette soiree"></span>
+			</a>
+			<a href="javascript:toogledelSoireeModal()">
+				<span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="auto" 
+					title="Supprimer cette soiree"></span>
+			</a>
+			</div>
+			{% include "modal.html" with modalId="delSoireeModal" modalTitle="Supprimer soiree" %}
+		{% endif %}
+		</h2>
+		<br>
+		<table class="table table-striped">
+			<tr>
+				<th>Libellé date (registre) :</th>
+				<td>{{soireeinfos.libelle_date_reg}}</td>
+			</tr>
+			<tr>
+				<th>Page du registre :</th>
+				<td>{{soireeinfos.page_registre.ref_registre}} p.{{soireeinfos.page_registre.num_page_pdf}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="row" style="margin-left:1%;">
+	<div class="col-md-10 col-md-offset-1">
+		<h4><center><b>Représentations</b></center></h4>
+		<br>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Position</th>
+					<th>Pièce/Animation</th>
+					<th>Auteur(s)</th>
+					<th>Desciption</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for representation in liste_representations %}
+				<tr>			
+					<td>{{ representation.position }}</td>
+					<td>
+						<a href="/pieces/{{representation.piece.id}}">{{ representation.piece.titre|capfirst }}</a>{{ representation.get_type_display|capfirst }}
+					</a></td>
+					<td>
+						{% for auteur in representation.piece.auteurs.all%}<a href="/personnes/{{auteur.id}}">{{ auteur.prenom|capfirst }} {{ auteur.nom|capfirst }}</a>;{%endfor%}
+						<a href="/personnes/{{representation.auteur.id}}">{{ representation.auteur.prenom|capfirst }} {{ representation.auteur.nom|capfirst }}</a>
+					</a></td>
+					<td>{{ representation.piece.commentaire }}{{ representation.description }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+		
+<div class="row" style="margin-left:1%;">
+	<div class="col-md-5">
+		<h4><center><b>Budget</b></center></h4>
+		<br>
+		<table class="table table-striped">
+			<tr>
+				<th >Débit Initial :</th>
+				<td >{{soireeinfos.budget.debit_initial_reg|currency}}</td>
+			</tr>
+			<tr>
+				<th >Crédit Final :</th>
+				<td >{{soireeinfos.budget.credit_final_reg|currency}}</td>
+			</tr>
+			<tr>
+				<th >Cachet :</th>
+				<td >{{soireeinfos.budget.get_montant_cachet_display|safe }}</td>
+			</tr>
+			<tr>
+				<th >Cachet Auteur :</th>
+				<td >{{soireeinfos.budget.montant_cachet_auteur|currency}}</td>
+			</tr>
+			<tr>
+				<th >Total Billets Vendus :</th>
+				<td >{{soireeinfos.budget.nb_total_billets_vendus_reg}}</td>
+			</tr>
+			<tr>
+				<th >Nombre Cachets :</th>
+				<td >{{soireeinfos.budget.nombre_cachets }}</td>
+			</tr>
+			<tr>
+				<th >Quart Pauvre :</th>
+				<td >{{soireeinfos.budget.quart_pauvre_reg|currency}}</td>
+			</tr>
+			<tr>
+				<th >Reste :</th>
+				<td >{{soireeinfos.budget.reste_reg|currency}}</td>
+			</tr>
+			<tr>
+				<th >Total Dépenses :</th>
+				<td >{{soireeinfos.budget.total_depenses_reg|currency}}</td>
+			</tr>
+			<tr>
+				<th >Total Recettes :</th>
+				<td >{{soireeinfos.budget.total_recettes_reg|currency}}</td>
+			</tr>
+			<tr>
+				<th >Débit dernière soirée :</th>
+				<td >{{soireeinfos.budget.debit_derniere_soiree_reg|currency}}</td>
+			</tr>
+			<tr>
+				<th >Dépenses corrigées :</th>
+				<td >{{soireeinfos.budget.total_depenses_corrige_reg|currency}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="col-md-6 col-md-offset-1">
+		<h4><center><b>Billetterie</b></center></h4>
+		<br>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th >Type</th>
+					<th >Prix</th>
+					<th >Billets vendus</th>
+					<th >Commentaire</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for billetterie in billetterieinfos.all %}
+				<tr>				
+					<td>{{billetterie.get_type_billet_display}}</td>
+					<td>{{billetterie.montant|currency}}</td>
+					<td>{{billetterie.nombre_billets_vendus}}</td>
+					<td>{{billetterie.commentaire}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<br/>
+		<h4><center><b>Débits : </b></center></h4>
+		<br>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th >Libellé</th>
+					<th >Montant</th>
+					<th >Type</th>
+					<th >Traduction</th>
+					<th >Mots cléfs</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for debit in debitsinfos.all %}
+				<tr>				
+					<td>{{debit.libelle}}</td>
+					<td>{{debit.montant|currency}}</td>
+					<td>{{debit.get_type_depense_display}}</td>
+					<td>{{debit.traduction}}</td>
+					<td>{{debit.mots_clefs}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<br/>
+		<h4><center><b>Crédits : </b></center></h4>
+		<br>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th >Libellé</th>
+					<th >Montant</th>
+			</tr>
+			</thead>
+			<tbody>
+				{% for credit in creditsinfos.all %}
+				<tr>				
+					<td>{{credit.libelle}}</td>
+					<td>{{credit.montant|currency}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
+</div>
+
+<script>
+	$(function() {
+		var modalContent = "<h4>Etes-vous sur de vouloir supprimer la <b>{{soireeinfos}}</b></h4></br></br>"
+		modalContent += "<button type='button' class='btn' onCLick='toogledelSoireeModal()'>Non</button> "		
+		modalContent += "<a href='/saisie/delete/soiree/{{soireeinfos.id}}'><button type='button' class='btn btn-primary'>Oui</button></a>"
+		addTodelSoireeModal(modalContent);
+	})
+</script>
+ 
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "page_base.html" %}
+
+{% comment %}
+
+	Page avec des onglet
+		
+		tab_list est un dictionnaire contenant le nom des onglets comme clefs et
+		le contenu de ces onglets comme valeur
+		
+		cette page contient un espace de notification, pour l'utiliser, 3 variable sont nécessaire :
+			alert = on/off											-> actier/desactiver la zone de notification
+			alert_type = success/error/waring 	-> les type de notification bootstrap
+			alert_message = chaîne de caractères-> contient de message à afficher dans la notifiation
+
+{% endcomment %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+ <ul class="nav nav-tabs" id="myTab">
+{% for name, content in tab_list.items %}
+	{% if active_tab == name %}
+		<li class="active"><a href="#{{name}}" data-toggle="tab">{{name}}</a></li>
+	{% else %}
+		<li><a href="#{{name}}" data-toggle="tab">{{name}}</a></li>
+	{% endif %}
+{% endfor %}
+</ul>
+<br/>
+{% if alert == 'on' %}
+<div class="alert alert-{{ alert_type }}">
+  {{ alert_message|safe }}
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  </div>
+{% endif %}
+<br/>
+<div class="tab-content">
+{% for name, content in tab_list.items %}
+	{% if active_tab == name %}
+		<div class="tab-pane active" id="{{name}}">{{content|safe}}</div>
+	{% else %}
+		<div class="tab-pane" id="{{name}}">{{content|safe}}</div>
+	{% endif %}
+{% endfor %}
+</div>
+
+{% endblock %}
+
+<script>
+	$(function () {$('#myTab a:first').tab('show')});
+</script>
