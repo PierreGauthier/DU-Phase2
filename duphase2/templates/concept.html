@@ -1,12 +1,15 @@
 
 {% for e in data %}
-<div class="ui inverted {{e.8}} very wide info_{{e.2}} concept one">{{e.9|safe}}</div>
+<div class="ui inverted {{e.8}} info_{{e.2}}">
+	<div class="content">
+	  		{{e.9|safe}}
+	</div>
+</div>
 {% endfor %}
 
-
-<div class="pusher concept one background">
+<div class="pusher concept {{n}} background" style='position: absolute;'>
 	<div class="ui grid">
-{% for r in 'xxxxxxxxxxxxxxxx' %}
+{% for r in 'xxxxxxxxxxx' %}
 			<div class="row">
 	{% for c in 'xxxxxxxxxxxxxxxx' %}
 		{% if forloop.parentloop.counter0|divisibleby:2 %}
@@ -31,9 +34,12 @@
 			</div>
 {% endfor %}
 	</div>
-	<div class='elements'>
+	<div class='elements' style=''>
 {% for e in data %}
-		<div class="popup toggle div_{{e.2}}" data-html='{{e.6}}' style='position: absolute; transform: scale({{e.4}}) rotate({{e.5}}deg);'></div>
+		<div class="popup toggle div_{{e.2}}" 
+			onclick=" $('.info_{{e.2}}.modal').modal('setting', 'transition', 'horizontal flip').modal('show');" 
+			data-html='{{e.6}}' 
+			style='position: absolute; transform: scale({{e.4}}) rotate({{e.5}}deg);'></div>
 {% endfor %}
 	</div>
 </div>
@@ -57,29 +63,28 @@ function grow(el) {
 
 	$(function() {
 		
-		$('.popup').popup();
-		
-		{% for e in data %}
-			$.get("/static/images/{{e.3}}", function(data) {
-          var $svg = $(data).find('svg');
+{% for e in data %}
+		$.get("/static/images/{{e.3}}", function(data) {
+          	var $svg = $(data).find('svg');
       		$svg.attr('id', 'svg_{{e.2}}');
       		$svg.attr('class', 'popup clickabe');
-				  //$svg.attr('style', 'position: absolute; transform: scale({{e.4}}) rotate({{e.5}}deg);');
-				  $svg.attr('onmouseenter','grow($(this))');
-				  $svg.attr('onmouseleave','ungrow($(this))');
-				  var $colorItem = $svg.find('.mycolor');
-				  if(typeof $colorItem.prop("tagName") === 'undefined') {
-				  	$svg.attr('fill','{{e.7}}');
-				  	$svg.attr('stroke','#000000');
-				  } 
-				  else {
-				  	$colorItem.attr('fill','{{e.7}}');
-				  	$colorItem.attr('stroke','#000000');
-				  }
+			  $svg.attr('onmouseenter','grow($(this))');
+			  $svg.attr('onmouseleave','ungrow($(this))');
+			  var $colorItem = $svg.find('.mycolor');
+			  if(typeof $colorItem.prop("tagName") === 'undefined') {
+			  	$svg.attr('fill','{{e.7}}');
+			  	$svg.attr('stroke','#000000');
+			  } 
+			  else {
+			  	$colorItem.attr('fill','{{e.7}}');
+			  	$colorItem.attr('stroke','#000000');
+			  }
           $('.div_{{e.2}}').append($svg);
-          $svg.parent().offset($('.case{{e.0}}{{e.1}}').offset());
           $svg.find('g').animate({svgTransform: "scale(0.8)"}, 1, function() {});
-			});
+          $svg.parent().offset($('.case{{e.0}}{{e.1}}').offset());
+          $svg.parent().offset($('.case{{e.0}}{{e.1}}').offset());
+				
+		});
 			
 		$('.info_{{e.2}}.sidebar').first()
 		  .sidebar('attach events', '.toggle.div_{{e.2}}')

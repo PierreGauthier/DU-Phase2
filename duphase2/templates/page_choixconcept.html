@@ -6,7 +6,7 @@
 
 	<style type="text/css">
 		html,body {  
-			overflow:hidden;/**/
+			/*overflow:hidden;/**/
 		}
 		#cone path {
     	fill: #ff8d2a;
@@ -23,18 +23,12 @@
 		h2 {
     	color: #aaaaaa;
 		}
-		.backmenu {
-		  z-index : 2;
-		}
-		.concept {
-		  z-index : -20;
-		}
-	  .slidebar {
-	    z-index : -10;
-	  }
 	  .menu {
-	    padding-top : 0px;
-	    margin-top : 0px;
+	    position:absolute;
+	    z-index:10;
+	  }
+	  .concept {
+	    width: {{x}}px;
 	  }
 		.concept.background {
 		  background-repeat: no-repeat; 
@@ -51,16 +45,15 @@
 	  }
 	</style>
   
-  <div class="ui secondary pointing menu inverted small">
-    <center>
-      <a class="active item" onclick='$(".basic.test.modal").modal("show");'>
+  {% include "concept.html" with data=data1 n='one' %}
+  {% include "concept.html" with data=data2 n='two' %}
+  {% include "concept.html" with data=data3 n='three' %}
+  
+  <div class="ui menu inverted">
+      <a class="active item" onclick='$(".basic.test.modal").modal("show");$(".menu").transition("slide up");'>
         <i class="home icon"></i> Choix Concept
       </a>
-    </center>
   </div>
-  {% include "concept.html" with data=data1 %}
-  {% include "concept.html" with data=data2 %}
-  {% include "concept.html" with data=data3 %}
 
 	<div class="ui basic test large modal transition" >
 		<center>
@@ -101,25 +94,29 @@
 	 function showc1() {
 	   $('.concept.three').hide();
 	   $('.concept.two').hide();
-	   $('.concept.one').show(); 
+	   $('.concept.one').show();
+	   $('.menu').transition('slide up');
 	 }
 	 
 	 function showc2() {
 	   $('.concept.one').hide();
 	   $('.concept.three').hide();
 	   $('.concept.two').show(); 
+	   $('.menu').transition('slide up');
 	 }
 	 
 	 function showc3() {
 	   $('.concept.one').hide();
 	   $('.concept.two').hide();
 	   $('.concept.three').show(); 
+	   $('.menu').transition('slide up');
 	 }
 	
 		$(function() {
 		  
+		  $('.menu').offset({ top: 10, left: {{xdiv2}} - $('.menu').width()/2 });
 		  showc1();
-			
+		  
 		/*
      * Replace all SVG images with inline SVG
      */
@@ -146,7 +143,12 @@
           }, 'xml');
       });
       
-      //$('.basic.test.modal').modal('show');
+      $('.basic.test.modal')
+        .modal('setting', 'closable', false)
+        .modal('setting', 'transition', 'slide down')
+        .modal('show');
+		
+		  $('.popup').popup();
    });
 		
 	</script>
