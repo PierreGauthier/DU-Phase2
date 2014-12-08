@@ -1,17 +1,12 @@
 {% extends "page_base.html" %}
 
-{% comment %}
-
-
-{% endcomment %}
-
 {% block title %}{{title}}{% endblock %}
 
 {% block content %}
 
 	<style type="text/css">
 		html,body {  
-			overflow:hidden;  
+			overflow:hidden;/**/
 		}
 		#cone path {
     	fill: #ff8d2a;
@@ -28,7 +23,44 @@
 		h2 {
     	color: #aaaaaa;
 		}
+		.backmenu {
+		  z-index : 2;
+		}
+		.concept {
+		  z-index : -20;
+		}
+	  .slidebar {
+	    z-index : -10;
+	  }
+	  .menu {
+	    padding-top : 0px;
+	    margin-top : 0px;
+	  }
+		.concept.background {
+		  background-repeat: no-repeat; 
+  		background-size: 100% 100%;
+		}
+  	.concept.one.background {
+  		background-image:url(/static/images/{{bg1}});
+	  }
+	  .concept.two.background {
+  		background-image:url(/static/images/{{bg2}});
+	  }
+	  .concept.three.background {
+  		background-image:url(/static/images/{{bg3}});
+	  }
 	</style>
+  
+  <div class="ui secondary pointing menu inverted small">
+    <center>
+      <a class="active item" onclick='$(".basic.test.modal").modal("show");'>
+        <i class="home icon"></i> Choix Concept
+      </a>
+    </center>
+  </div>
+  {% include "concept.html" with data=data1 %}
+  {% include "concept.html" with data=data2 %}
+  {% include "concept.html" with data=data3 %}
 
 	<div class="ui basic test large modal transition" >
 		<center>
@@ -39,15 +71,19 @@
       <div class="ui center aligned grid">
       	<div class="five wide column">
       		<img id="cone" class="svg" src="/static/images/cone.svg"/><br><br>
-      		Est civitatibus discrevimus ut Nino civitatibus Osdroenam civitatibus vetere hac Samosata amplis nunc civitatibus post Hierapoli Samosata adsurgit adsurgit civitatibus inlustris post quam Hierapoli hac clementer Osdroenam quam quam quam.
+      		Est civitatibus discrevimus ut Nino civitatibus Osdroenam civitatibus vetere hac Samosata amplis nunc civitatibus post 
+      		Hierapoli Samosata adsurgit adsurgit civitatibus inlustris post quam Hierapoli hac clementer Osdroenam quam quam quam.
       	</div>
       	<div class="five wide column">
       		<img id="progess_bar" class="svg" src="/static/images/progress9.svg"/></i><br><br>
-      		Humatur Publicola Reguli et alitur erubesceret aerario absentia adultae cum subsidiis Scipionis subsidiis uxor et uxor Valerius Reguli liberis adultae.
+      		Humatur Publicola Reguli et alitur erubesceret aerario absentia adultae cum subsidiis Scipionis subsidiis uxor et uxor 
+      		Valerius Reguli liberis adultae.
       	</div>
       	<div class="five wide column">
       		<img id="worksign" class="svg" src="/static/images/worksign.svg"/><br><br>
-      		Conpingerentur praefectum Chilo emersit ea ut ea Olybrium unde et et negotio Olybrium ea et quos Sericus palaestrita autem conpingerentur aruspex rapti palaestrita funditabat Asbolius vincula Maxima Campensis Olybrium tali hi Chilo hi Sericus Maxima funditabat praefectum rapti praefectum vitamque.
+      		Conpingerentur praefectum Chilo emersit ea ut ea Olybrium unde et et negotio Olybrium ea et quos Sericus palaestrita autem 
+      		conpingerentur aruspex rapti palaestrita funditabat Asbolius vincula Maxima Campensis Olybrium tali hi Chilo hi Sericus Maxima 
+      		funditabat praefectum rapti praefectum vitamque.
       	</div>
       </div>
     </div>
@@ -59,32 +95,30 @@
       </div>
     </div>
   </div>
-  
-  <div class="concept concept1">{% include "concept1.html" %}</div>
-  <div class="concept concept2 hide">{% include "concept2.html" %}</div>
-  <div class="concept concept3 hide">{% include "concept3.html" %}</div>
 	
 	<script>
 	
 	 function showc1() {
-	   $('.concept2').hide();
-	   $('.concept3').hide();
-	   $('.concept1').show(); 
+	   $('.concept.three').hide();
+	   $('.concept.two').hide();
+	   $('.concept.one').show(); 
 	 }
 	 
 	 function showc2() {
-	   $('.concept1').hide();
-	   $('.concept3').hide();
-	   $('.concept2').show(); 
+	   $('.concept.one').hide();
+	   $('.concept.three').hide();
+	   $('.concept.two').show(); 
 	 }
 	 
 	 function showc3() {
-	   $('.concept1').hide();
-	   $('.concept2').hide();
-	   $('.concept3').show(); 
+	   $('.concept.one').hide();
+	   $('.concept.two').hide();
+	   $('.concept.three').show(); 
 	 }
 	
 		$(function() {
+		  
+		  showc1();
 			
 		/*
      * Replace all SVG images with inline SVG
@@ -112,7 +146,7 @@
           }, 'xml');
       });
       
-      $('.basic.test.modal').modal('show');
+      //$('.basic.test.modal').modal('show');
    });
 		
 	</script>
