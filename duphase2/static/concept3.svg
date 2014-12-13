@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="2200" height="5832" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+style="display: block;margin-left: auto;margin-right: auto;">
+
+
+<!-- Page 1 -->
+<svg x="0" y="0" width="2200" height="5768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+style="display: block;margin-left: auto;margin-right: auto;">
+<defs>
+<clipPath id="c0_1"><path d="M0.5,5768.5L0.5,0.5l2200,0l0,5768Z" /></clipPath>
+
+<style type="text/css"><![CDATA[
+
+.g3_1{
+fill: #FFFFFF;
+}
+.g2_1{
+fill: #F9F9F9;
+}
+.g1_1{
+fill: #4EBBCE;
+}
+
+.s1_1{
+font-size: 61.11px;
+font-family: DULRDP-RobotoSlab-Regular1;
+fill: #444443;
+}
+.s6_1{
+font-size: 73.33px;
+font-family: DULRDP-Roboto-Light1;
+fill: #FFFFFF;
+}
+.s4_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Light1;
+fill: #444443;
+}
+.s8_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Medium1;
+fill: #FFFFFF;
+}
+.s5_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Light_21;
+fill: #444443;
+}
+.s9_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Light_21;
+fill: #FFFFFF;
+}
+.s3_1{
+font-size: 73.33px;
+font-family: DULRDP-Roboto-Light1;
+fill: #444443;
+}
+.s7_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Light1;
+fill: #FFFFFF;
+}
+.s2_1{
+font-size: 29.03px;
+font-family: DULRDP-Roboto-Regular1;
+fill: #444443;
+}
+
+]]></style>
+
+</defs>
+<path d="M0,0
+L0,5768
+L2200,5768
+L2200,0 Z " 
+fill="#FFFFFF" stroke="none" />
+<path d="M0,5768l2200,0l0,-896L0,4872l0,896Z" class="g1_1" />
+<path d="M0,3515l2200,0l0,-896L0,2619l0,896Z" class="g2_1" />
+<path d="M0,1115l2200,0l0,-146L0,969l0,146Z" class="g1_1" />
+<g clip-path="url(#c0_1)">
+<path d="M342,1053c-3,14,-16,24,-32,24c-19,0,-35,-16,-35,-35c0,-20,16,-35,35,-35c12,0,22,6,27,14l0,-12l5,0l0,22l-5,0c-3,-12,-13,-19,-27,-19c-17,0,-30,13,-30,30c0,17,13,30,30,30c14,0,24,-8,27,-19l5,0Z" class="g3_1" />
+<path d="M396,1053c0,-11,-9,-20,-20,-20c-10,0,-19,9,-19,20c0,11,9,20,19,20c11,0,20,-9,20,-20m4,0c0,13,-10,24,-24,24c-13,0,-23,-11,-23,-24c0,-13,10,-24,23,-24c14,0,24,11,24,24Z" class="g3_1" />
+<path d="M495,1051l37,0c-1,-10,-8,-18,-18,-18c-10,0,-18,8,-19,18m41,4l-1,-1l0,1l-40,0c1,10,8,18,20,18c7,0,13,-4,15,-8l5,0c-3,7,-11,12,-20,12c-14,0,-24,-11,-24,-24c0,-13,10,-24,23,-24c13,0,22,10,22,24l0,2Z" class="g3_1" />
+<path d="M591,1061c-2,10,-10,16,-21,16c-14,0,-24,-11,-24,-24c0,-13,10,-24,24,-24c7,0,13,3,17,8l0,-6l4,0l0,14l-4,0c-2,-7,-9,-12,-17,-12c-11,0,-20,9,-20,20c0,11,9,20,20,20c8,0,15,-5,16,-12Z" class="g3_1" />
+<path d="M634,1075c-3,1,-6,2,-9,2c-10,0,-14,-6,-14,-17l0,-25l-13,0l0,-5l13,0l0,-16l4,0l0,16l17,0l0,5l-17,0l0,25c0,9,3,13,11,13c2,0,5,-1,7,-1Z" class="g3_1" />
+<path d="M428,1009l-1,0l-4,0l-10,0l0,4l11,0l0,58l-11,0l0,4l26,0l0,-4l-11,0l0,-55l43,55l-8,0l0,4l11,0l1,0l4,0l0,-4l-3,0Z" class="g3_1" />
+<path d="M479,1009l-1,0l-4,0l-11,0l0,4l11,0l0,23l5,0l0,-23l11,0l0,-4Z" class="g3_1" />
+</g>
+<text 
+x="34" 
+y="83" 
+textLength="804" 
+class="s1_1"
+>Le Chantier Communiquant</text>
+
+<text 
+x="1923" 
+y="77" 
+textLength="92" 
+class="s2_1"
+>Conect</text>
+
+<text 
+x="1773" 
+y="77" 
+textLength="75" 
+class="s2_1"
+>Appia</text>
+
+<text 
+x="1597" 
+y="77" 
+textLength="95" 
+class="s2_1"
+>Indawo</text>
+
+<g clip-path="url(#c0_1)">
+<path d="M2023,125l-104,0l0,-7l104,0l0,7Z" class="g1_1" />
+</g>
+<text 
+x="275" 
+y="1263" 
+textLength="341" 
+class="s3_1"
+>Pourquoi ?</text>
+
+<text 
+x="275" 
+y="1351" 
+textLength="1699" 
+class="s4_1"
+>Lorsque l’on habite en ville la multiplication des chantiers peut rapidement devenir un problème important. </text>
+
+<text 
+x="275" 
+y="1395" 
+textLength="1646" 
+class="s4_1"
+>Les désagréments associés aux chantiers relève souvent d’un manque de communication en amont et </text>
+
+<text 
+x="275" 
+y="1439" 
+textLength="1673" 
+class="s4_1"
+>pendant la durée des chantiers, la diffusion de l’information se fait encore de manière trop restreinte et si </text>
+
+<text 
+x="275" 
+y="1483" 
+textLength="949" 
+class="s4_1"
+>rien n’est fait de plus en plus de chantiers seront contestés, </text>
+
+<text 
+x="1243" 
+y="1483" 
+textLength="628" 
+class="s4_1"
+>les travaux publics sont principalement </text>
+
+<text 
+x="275" 
+y="1527" 
+textLength="1685" 
+class="s5_1"
+>fnancés par l’argent public issue des collectivités, c’est pourquoi il nécessaire de communiquer autant de </text>
+
+<text 
+x="275" 
+y="1571" 
+textLength="1690" 
+class="s4_1"
+>possible sur l’utilisation de cet argent au quotidien et en quoi le chantier qui viens d’arriver dans ma rue va </text>
+
+<text 
+x="275" 
+y="1615" 
+textLength="584" 
+class="s4_1"
+>apporter quelque chose de nouveau. </text>
+
+<text 
+x="275" 
+y="1810" 
+textLength="318" 
+class="s3_1"
+>Pour qui ?</text>
+
+<text 
+x="275" 
+y="1898" 
+textLength="1677" 
+class="s4_1"
+>Si beaucoup de chantiers prennent place en campagne, le réel problème de communication actuel réside </text>
+
+<text 
+x="275" 
+y="1942" 
+textLength="1535" 
+class="s4_1"
+>dans la ville où la confrontation avec un chantier laisse peu d’échappatoire et viens s’ajouter aux </text>
+
+<text 
+x="275" 
+y="1986" 
+textLength="329" 
+class="s4_1"
+>nuisances de la ville. </text>
+
+<text 
+x="275" 
+y="2030" 
+textLength="1634" 
+class="s4_1"
+>Ce concept s’axe sur la communication auprès des usagers citadins au sens large du terme, qu’ils soit </text>
+
+<text 
+x="275" 
+y="2074" 
+textLength="1606" 
+class="s4_1"
+>urbain ou péri-urbains, qui se retrouvent un jour ou l’autre sur leur trajet quotidien confrontés à un ou </text>
+
+<text 
+x="275" 
+y="2118" 
+textLength="314" 
+class="s4_1"
+>plusieurs chantiers. </text>
+
+<text 
+x="275" 
+y="2356" 
+textLength="371" 
+class="s3_1"
+>Comment ?</text>
+
+<text 
+x="275" 
+y="2444" 
+textLength="1625" 
+class="s4_1"
+>Grâce à l’aide d’un plot connecté situé au sein du chantier et d’une application web, la communication </text>
+
+<text 
+x="275" 
+y="2488" 
+textLength="1673" 
+class="s4_1"
+>entre le chantier et ses usagers se fait de façon claire et intuitive que ce soit avant même la validation de </text>
+
+<text 
+x="275" 
+y="2532" 
+textLength="416" 
+class="s4_1"
+>celui-ci jusqu’à son terme. </text>
+
+<text 
+x="275" 
+y="5018" 
+textLength="704" 
+class="s6_1"
+>Captation de données</text>
+
+<text 
+x="275" 
+y="5106" 
+textLength="1568" 
+class="s7_1"
+>Nous souhaitons développer une sorte de label de chantiers à hautes qualités environnementales. </text>
+
+<text 
+x="275" 
+y="5150" 
+textLength="397" 
+class="s7_1"
+>Fournir des informations </text>
+
+<text 
+x="690" 
+y="5150" 
+textLength="237" 
+class="s7_1"
+>concernant les </text>
+
+<text 
+x="937" 
+y="5150" 
+textLength="310" 
+class="s8_1"
+>nuisances sonores</text>
+
+<text 
+x="1247" 
+y="5150" 
+textLength="61" 
+class="s7_1"
+>, les</text>
+
+<text 
+x="1318" 
+y="5150" 
+textLength="164" 
+class="s8_1"
+>vibrations</text>
+
+<text 
+x="1491" 
+y="5150" 
+textLength="68" 
+class="s7_1"
+>et la </text>
+
+<text 
+x="1568" 
+y="5150" 
+textLength="228" 
+class="s8_1"
+>qualité de l’air</text>
+
+<text 
+x="1797" 
+y="5150" 
+textLength="56" 
+class="s7_1"
+>, ou </text>
+
+<text 
+x="275" 
+y="5194" 
+textLength="164" 
+class="s7_1"
+>encore les </text>
+
+<text 
+x="449" 
+y="5194" 
+textLength="113" 
+class="s8_1"
+>odeurs</text>
+
+<text 
+x="571" 
+y="5194" 
+textLength="165" 
+class="s7_1"
+>dégagées. </text>
+
+<text 
+x="275" 
+y="5238" 
+textLength="1653" 
+class="s7_1"
+>Actuellement aucune communication n’a lieu sur ce point car ce n’est pas encore obligatoire. C’est peut </text>
+
+<text 
+x="275" 
+y="5282" 
+textLength="1668" 
+class="s7_1"
+>être un peu jeune mais à l’avenir cela peut être nécessaire pour un chantier d’assurer une certaine image </text>
+
+<text 
+x="275" 
+y="5326" 
+textLength="1207" 
+class="s7_1"
+>de marque environnementale sur les nuisances accompagnant un chantier.</text>
+
+<text 
+x="275" 
+y="5414" 
+textLength="1649" 
+class="s7_1"
+>Le plot disposé sur le site du chantier est équipé de capteurs lui permettant d’effectuer la captation des </text>
+
+<text 
+x="275" 
+y="5458" 
+textLength="1565" 
+class="s9_1"
+>données. Installé une à deux semaines avant il dispose d’un temps d’adaptation afn d’étaloner les </text>
+
+<text 
+x="275" 
+y="5502" 
+textLength="1557" 
+class="s7_1"
+>mesures permettant ainsi de réellement discerner l’impact du chantier sur l’environnement direct. </text>
+
+<text 
+x="275" 
+y="2806" 
+textLength="221" 
+class="s3_1"
+>Le Plot</text>
+
+<text 
+x="275" 
+y="2894" 
+textLength="1626" 
+class="s4_1"
+>L’objet prend la forme d’un simple plot de signalisation, comme on en rencontre beaucoup aujourd’hui </text>
+
+<text 
+x="275" 
+y="2938" 
+textLength="1573" 
+class="s4_1"
+>aux abords des chantiers. L’idée est vraiment de disposer d’un objet de communication facilement </text>
+
+<text 
+x="275" 
+y="2982" 
+textLength="1174" 
+class="s4_1"
+>transportable et dont la présence ne doit pas nécessairement être visible.</text>
+
+<text 
+x="275" 
+y="3026" 
+textLength="1662" 
+class="s5_1"
+>L’internet des objets à cette fnalité où il ne s’agit plus de créer de nouveaux objets aux nouvelles Formes </text>
+
+<text 
+x="275" 
+y="3070" 
+textLength="1587" 
+class="s4_1"
+>mais aussi d’assurer la connectivité et l’augmentation des objets que nous avons déjà l’habitude de </text>
+
+<text 
+x="275" 
+y="3114" 
+textLength="1652" 
+class="s4_1"
+>cotôyer, ainsi nous évitons la saturation dû à un nombre toujours plus grand d’objets et gadgets en tout </text>
+
+<text 
+x="275" 
+y="3158" 
+textLength="1659" 
+class="s5_1"
+>genre. Il s’agit ici d’un parti pris Fort afn de bien montrer notre volonté d’ancrer l’internet des objets dans </text>
+
+<text 
+x="275" 
+y="3202" 
+textLength="662" 
+class="s4_1"
+>notre quotidien d’une façon transparente.</text>
+
+<text 
+x="275" 
+y="3290" 
+textLength="1623" 
+class="s4_1"
+>Le Plot à une fonction de captation de données environnementales comme nous le préciserons par la </text>
+
+<text 
+x="275" 
+y="3334" 
+textLength="1576" 
+class="s5_1"
+>suite, mais il est aussi géolocalisé et permet d’identifer l’activité du chantier et sa zone d’inFluence. </text>
+
+<g clip-path="url(#c0_1)">
+<path d="M2200,4872L0,4872L0,3975l2200,0l0,897Z" class="g2_1" />
+</g>
+<text 
+x="275" 
+y="4163" 
+textLength="771" 
+class="s3_1"
+>Partage de l’information</text>
+
+<text 
+x="275" 
+y="4295" 
+textLength="1636" 
+class="s5_1"
+>Le Fait de placer le plot sur le chantier permet de valider son activité sur la carte de navigation. La zone </text>
+
+<text 
+x="275" 
+y="4339" 
+textLength="1558" 
+class="s5_1"
+>est en eFFet identifée au préalable grâce aux plans du géomètre via une application de back oFfce </text>
+
+<text 
+x="275" 
+y="4383" 
+textLength="1667" 
+class="s5_1"
+>dédiée aux proFessionnels. Le Plot permet de bien identifer l’activité actuelle du chantier afn de savoir si </text>
+
+<text 
+x="275" 
+y="4427" 
+textLength="1518" 
+class="s4_1"
+>il sera vraiment ou non une gène pour la journée. Des boutons de contrôles permettent en effet </text>
+
+<text 
+x="275" 
+y="4471" 
+textLength="1639" 
+class="s4_1"
+>d’indiquer l’activité ou l’inactivité du chantier, mais aussi la fermeture complète ou partielle d’une route. </text>
+
+<text 
+x="275" 
+y="4515" 
+textLength="1581" 
+class="s5_1"
+>Une zone d’inFluence est étendue sur un périmètre proche pouvant se voir impacter par l’activité du </text>
+
+<text 
+x="275" 
+y="4559" 
+textLength="1496" 
+class="s5_1"
+>chantier. Le tout Fonctionnant principalement via géolocalisation GPS et 3G afn d’assurer une </text>
+
+<text 
+x="275" 
+y="4603" 
+textLength="755" 
+class="s4_1"
+>localisation précise et une bonne transmission.</text>
+
+<text 
+x="275" 
+y="4647" 
+textLength="1601" 
+class="s5_1"
+>Les données environnemtales captées sont elles aussi transmises via 3G et stockées dans un cloud </text>
+
+<text 
+x="275" 
+y="4691" 
+textLength="776" 
+class="s4_1"
+>destiné à l’open data. (data nantes par exemple.)</text>
+
+
+<path d="M0,5768
+L0,0
+L2200,0
+L2200,5768 z "
+fill="none"
+stroke-width="1.0"
+stroke-linecap="butt"
+stroke-linejoin="miter"
+stroke="#000000" />
+
+<!-- Any embedded fonts defined here -->
+<style type="text/css" ><![CDATA[
+
+@font-face {
+	font-family: DULRDP-Roboto-Regular1;
+	src :url("index/fonts/DULRDP-Roboto-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-family: DULRDP-Roboto-Light_21;
+	src :url("index/fonts/DULRDP-Roboto-Light_2.woff") format("woff");
+}
+
+@font-face {
+	font-family: DULRDP-Roboto-Light1;
+	src :url("index/fonts/DULRDP-Roboto-Light.woff") format("woff");
+}
+
+@font-face {
+	font-family: DULRDP-Roboto-Medium1;
+	src :url("index/fonts/DULRDP-Roboto-Medium.woff") format("woff");
+}
+
+@font-face {
+	font-family: DULRDP-RobotoSlab-Regular1;
+	src :url("index/fonts/DULRDP-RobotoSlab-Regular.woff") format("woff");
+}
+
+]]></style>
+
+</svg>
+<title>conect Page1</title>
+<!-- Navbar below-->
+<path d="M0,5768
+L0,5832
+L2200,5832
+L2200,5768 z " 
+fill="#FFFFFF" stroke="none" />
+<style type="text/css"><![CDATA[
+.buttonPDFGen:hover{
+	fill:#dfdfdf;
+}
+.buttonPDFGen:active{
+	fill:#f00;
+}
+]]></style>
+
+<rect x="0" y="5768" rx="5" ry="5" fill="#ededed" width="2200" height="14" />
+
+</svg>

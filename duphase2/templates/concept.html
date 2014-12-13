@@ -1,48 +1,213 @@
-
 {% for e in data %}
-<div class="ui inverted {{e.8}} info_{{e.2}}">
-	<div class="content">
-	  		{{e.9|safe}}
-	</div>
-</div>
+	<div class="ui inverted {{e.8}} info_{{e.2}}">
+		<div class="content">
+		  		{{e.9|safe}}
+		</div>
+	</div>	
 {% endfor %}
 
-<div class="pusher concept {{n}} background" style='position: absolute;'>
-	<div class="ui grid">
-{% for r in 'xxxxxxxxxxx' %}
+<div class="pusher concept {{n}} content">
+	
+	<div class="">
+		
+		<div class="ui secondary pointing menu sticky concept {{n}} inverted" style="margin-top:0px; padding-top:0px">
+			<img src="/static/concept{{n}}_menu.png" style="position:absolute;top:-1px;width:100%"/>
+			<a class="ui item" style="margin-top:25px; margin-left:10px" onclick="showc('none');">
+		      <i class="left arrow big icon"></i>
+		  </a>
+		  <div id="{{n}}scrollmenu" class="right menu" style="margin-top:30px">
+		    <a class="ui active item" href="#pict">
+		      Pourquoi
+		    </a>
+		    <a class="ui item" href="#test">
+		      Pour qui
+		    </a>
+		    <a class="ui item" href="#11">
+		      Comment
+		    </a>
+		    <a class="ui item" href="#12">
+		      Le plot
+		    </a>
+		    <a class="ui item" href="#13">
+		        
+		    </a>
+		  </div>
+		</div>
+		
+		<div class="ui menu concept test{{n}} sticky" >
+			
+			<div class="ui grid">
+				<div class="one wide column" style="margin:8px 10px;"onclick='showc("none");'>
+					<i class="arrow left icon white big"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<div id="context{{n}}" class="concept {{n}} content" style="background-color:white;">
+		
+		<img id="pict" src="/static/concept{{n}}.svg" style="width:100%; margin-left:0%;"/>	
+		
+		<div id="test" class="ui grid concept {{n}} background">
+	{% for r in 'xxxxxxxxxxx' %}
 			<div class="row">
-	{% for c in 'xxxxxxxxxxxxxxxx' %}
-		{% if forloop.parentloop.counter0|divisibleby:2 %}
-			{% if forloop.counter0|divisibleby:2 %}
+		{% for c in 'xxxxxxxxxxxxxxxx' %}
+			{% if forloop.parentloop.counter0|divisibleby:2 %}
+				{% if forloop.counter0|divisibleby:2 %}
 				<div class="column" style="opacity: 0.2">
-			{% else %} 
+				{% else %} 
 				<div class="column black" style="opacity: 0.1">
-			{% endif %}
-		{% else %}
-			{% if forloop.counter0|divisibleby:2 %}
+				{% endif %}
+			{% else %}
+				{% if forloop.counter0|divisibleby:2 %}
 				<div class="column black" style="opacity: 0.1">
-			{% else %} 
+				{% else %} 
 				<div class="column" style="opacity: 0.2">
+				{% endif %}
 			{% endif %}
-		{% endif %}
-				<!--	<div class="column"><!---->
+		<!--	<div class="column"><!--->
 					<span class="case{{ forloop.parentloop.counter0 }}{{ forloop.counter0 }} hide"/><br/>
-						({{ forloop.parentloop.counter0 }},{{ forloop.counter0 }})
+					({{ forloop.parentloop.counter0 }},{{ forloop.counter0 }})
 					<br/>
 				</div>
-	{% endfor %}
+		{% endfor %}
 			</div>
-{% endfor %}
-	</div>
-	<div class='elements' style=''>
-{% for e in data %}
+	{% endfor %}
+		</div>
+				
+		<div class='elements' style=''>
+	{% for e in data %}
 		<div class="popup toggle div_{{e.2}}" 
 			onclick=" $('.info_{{e.2}}.modal').modal('setting', 'transition', 'horizontal flip').modal('show');" 
 			data-html='{{e.6}}' 
 			style='position: absolute; transform: scale({{e.4}}) rotate({{e.5}}deg);'></div>
-{% endfor %}
+	{% endfor %}
+		</div>
+		
+		<div id="11"></div>
+			<div id="12"></div>
+				<div id="13"></div>
+		
 	</div>
+	
 </div>
+
+<script type="text/javascript">
+
+	$(function(){
+		
+		
+		// Cache selectors
+		var lastId,
+		topMenu = $("#{{n}}scrollmenu"),
+		topMenuHeight = topMenu.outerHeight()+15,
+		
+		// All list items
+		menuItems = topMenu.find("a"),
+		
+		// Anchors corresponding to menu items
+		scrollItems = menuItems.map(function(){
+			var item = $($(this).attr("href"));
+			if (item.length) { return item; }
+			});
+		
+		
+		// Bind click handler to menu items
+		menuItems.click(function(e){
+			var href = $(this).attr("href"),
+			offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+			$('body, html').animate({
+         scrollTop: offsetTop
+		     }, 800);
+		     menuItems.removeClass("active");
+				 $(this).addClass("active");
+		     return false;
+			});
+		
+		
+		// Bind to scroll
+		$(window).scroll(function(){
+			
+			// Get container scroll position
+			var fromTop = $(this).scrollTop()+topMenuHeight;
+			
+			// Get id of current scroll item
+			var cur = scrollItems.map(function(){
+				if ($(this).offset().top < fromTop) {
+					return $(this); 
+				}
+			});
+			
+			// Get the id of the current element
+			cur = cur[cur.length-1];
+			var id = cur && cur.length ? cur[0].id : "";
+			
+			if (lastId !== id) {
+				lastId = id;
+				// Set/remove active class
+				menuItems.removeClass("active");
+				menuItems.filter("[href=#"+id+"]").addClass("active");
+			}
+			
+			});
+			
+		});
+</script>
+	
+
+	
+	
+	
+<!--	
+
+	<div id="context{{n}}">
+		<div>
+			
+		
+	
+		
+			
+		<div class="concept {{n}} content background" style='position: absolute;'>
+			<div class="ui grid">
+		{% for r in 'xxxxxxxxxxx' %}
+					<div class="row">
+			{% for c in 'xxxxxxxxxxxxxxxx' %}
+				{% if forloop.parentloop.counter0|divisibleby:2 %}
+					{% if forloop.counter0|divisibleby:2 %}
+						<div class="column" style="opacity: 0.2">
+					{% else %} 
+						<div class="column black" style="opacity: 0.1">
+					{% endif %}
+				{% else %}
+					{% if forloop.counter0|divisibleby:2 %}
+						<div class="column black" style="opacity: 0.1">
+					{% else %} 
+						<div class="column" style="opacity: 0.2">
+					{% endif %}
+				{% endif %}
+						<!--	<div class="column"><!->
+							<span class="case{{ forloop.parentloop.counter0 }}{{ forloop.counter0 }} hide"/><br/>
+								({{ forloop.parentloop.counter0 }},{{ forloop.counter0 }})
+							<br/>
+						</div>
+			{% endfor %}
+					</div>
+		{% endfor %}
+			</div>
+			<div class='elements' style=''>
+		{% for e in data %}
+				<div class="popup toggle div_{{e.2}}" 
+					onclick=" $('.info_{{e.2}}.modal').modal('setting', 'transition', 'horizontal flip').modal('show');" 
+					data-html='{{e.6}}' 
+					style='position: absolute; transform: scale({{e.4}}) rotate({{e.5}}deg);'></div>
+		{% endfor %}
+			</div>
+			
+		</div>	
+	</div>
+	
+</div>
+-->
 	
 	
 <script>

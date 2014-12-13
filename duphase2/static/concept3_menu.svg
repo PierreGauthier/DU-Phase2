@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="2200" height="5832" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+style="display: block;margin-left: auto;margin-right: auto;">
+
+
+<!-- Page 1 -->
+<svg x="0" y="0" width="2200" height="5768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+style="display: block;margin-left: auto;margin-right: auto;">
+<defs>
+<clipPath id="c0_1"><path d="M0.5,5768.5L0.5,0.5l2200,0l0,5768Z" /></clipPath>
+
+<style type="text/css"><![CDATA[
+
+.g3_1{
+fill: #FFFFFF;
+}
+.g2_1{
+fill: #F9F9F9;
+}
+.g1_1{
+fill: #4EBBCE;
+}
+
+.s1_1{
+font-size: 61.11px;
+font-family: DULRDP-RobotoSlab-Regular1;
+fill: #444443;
+}
+.s6_1{
+font-size: 73.33px;
+font-family: DULRDP-Roboto-Light1;
+fill: #FFFFFF;
+}
+.s4_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Light1;
+fill: #444443;
+}
+.s8_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Medium1;
+fill: #FFFFFF;
+}
+.s5_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Light_21;
+fill: #444443;
+}
+.s9_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Light_21;
+fill: #FFFFFF;
+}
+.s3_1{
+font-size: 73.33px;
+font-family: DULRDP-Roboto-Light1;
+fill: #444443;
+}
+.s7_1{
+font-size: 36.67px;
+font-family: DULRDP-Roboto-Light1;
+fill: #FFFFFF;
+}
+.s2_1{
+font-size: 29.03px;
+font-family: DULRDP-Roboto-Regular1;
+fill: #444443;
+}
+
+]]></style>
+
+</defs>
+<path d="M0,0
+L0,5768
+L2200,5768
+L2200,0 Z " 
+fill="#FFFFFF" stroke="none" />
+<path d="M0,1115l2200,0l0,-146L0,969l0,146Z" class="g1_1" />
+	
+<g clip-path="url(#c0_1)">
+<path d="M342,1053c-3,14,-16,24,-32,24c-19,0,-35,-16,-35,-35c0,-20,16,-35,35,-35c12,0,22,6,27,14l0,-12l5,0l0,22l-5,0c-3,-12,-13,-19,-27,-19c-17,0,-30,13,-30,30c0,17,13,30,30,30c14,0,24,-8,27,-19l5,0Z" class="g3_1" />
+<path d="M396,1053c0,-11,-9,-20,-20,-20c-10,0,-19,9,-19,20c0,11,9,20,19,20c11,0,20,-9,20,-20m4,0c0,13,-10,24,-24,24c-13,0,-23,-11,-23,-24c0,-13,10,-24,23,-24c14,0,24,11,24,24Z" class="g3_1" />
+<path d="M495,1051l37,0c-1,-10,-8,-18,-18,-18c-10,0,-18,8,-19,18m41,4l-1,-1l0,1l-40,0c1,10,8,18,20,18c7,0,13,-4,15,-8l5,0c-3,7,-11,12,-20,12c-14,0,-24,-11,-24,-24c0,-13,10,-24,23,-24c13,0,22,10,22,24l0,2Z" class="g3_1" />
+<path d="M591,1061c-2,10,-10,16,-21,16c-14,0,-24,-11,-24,-24c0,-13,10,-24,24,-24c7,0,13,3,17,8l0,-6l4,0l0,14l-4,0c-2,-7,-9,-12,-17,-12c-11,0,-20,9,-20,20c0,11,9,20,20,20c8,0,15,-5,16,-12Z" class="g3_1" />
+<path d="M634,1075c-3,1,-6,2,-9,2c-10,0,-14,-6,-14,-17l0,-25l-13,0l0,-5l13,0l0,-16l4,0l0,16l17,0l0,5l-17,0l0,25c0,9,3,13,11,13c2,0,5,-1,7,-1Z" class="g3_1" />
+<path d="M428,1009l-1,0l-4,0l-10,0l0,4l11,0l0,58l-11,0l0,4l26,0l0,-4l-11,0l0,-55l43,55l-8,0l0,4l11,0l1,0l4,0l0,-4l-3,0Z" class="g3_1" />
+<path d="M479,1009l-1,0l-4,0l-11,0l0,4l11,0l0,23l5,0l0,-23l11,0l0,-4Z" class="g3_1" />
+</g>
+
+<text 
+x="34" 
+y="83" 
+textLength="804" 
+class="s1_1"
+>Le Chantier Communiquant</text>
+
+<text 
+x="1923" 
+y="77" 
+textLength="92" 
+class="s2_1"
+>Conect</text>
+
+<text 
+x="1773" 
+y="77" 
+textLength="75" 
+class="s2_1"
+>Appia</text>
+
+<text 
+x="1597" 
+y="77" 
+textLength="95" 
+class="s2_1"
+>Indawo</text>
+
+<g clip-path="url(#c0_1)">
+<path d="M2023,125l-104,0l0,-7l104,0l0,7Z" class="g1_1" />
+</g>
+
+
+
+
+<path d="M0,5768
+L0,0
+L2200,0
+L2200,5768 z "
+fill="none"
+stroke-width="1.0"
+stroke-linecap="butt"
+stroke-linejoin="miter"
+stroke="#000000" />
+
+<!-- Any embedded fonts defined here -->
+<style type="text/css" ><![CDATA[
+
+@font-face {
+	font-family: DULRDP-Roboto-Regular1;
+	src :url("index/fonts/DULRDP-Roboto-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-family: DULRDP-Roboto-Light_21;
+	src :url("index/fonts/DULRDP-Roboto-Light_2.woff") format("woff");
+}
+
+@font-face {
+	font-family: DULRDP-Roboto-Light1;
+	src :url("index/fonts/DULRDP-Roboto-Light.woff") format("woff");
+}
+
+@font-face {
+	font-family: DULRDP-Roboto-Medium1;
+	src :url("index/fonts/DULRDP-Roboto-Medium.woff") format("woff");
+}
+
+@font-face {
+	font-family: DULRDP-RobotoSlab-Regular1;
+	src :url("index/fonts/DULRDP-RobotoSlab-Regular.woff") format("woff");
+}
+
+]]></style>
+
+</svg>
+</svg>

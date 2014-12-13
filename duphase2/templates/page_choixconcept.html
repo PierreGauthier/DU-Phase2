@@ -7,15 +7,16 @@
 	<style type="text/css">
 		html,body {  
 			/*overflow:hidden;/**/
+		 /* overflow-x: hidden;*/
 		}
-		#cone path {
-    	fill: #ff8d2a;
+		#indawo path {
+    	fill: #EC6C44;
 		}
-		#progess_bar path {
-    	fill: #63cdff;
+		#appia path {
+    	fill: #EC6C44;
 		}
-		#worksign path {
-    	fill: #ff776d;
+		#conect path {
+    	fill: #4EBDD0;
 		}
 		h1 {
     	font-size: 4em;
@@ -23,10 +24,6 @@
 		h2 {
     	color: #aaaaaa;
 		}
-	  .menu {
-	    position:absolute;
-	    z-index:10;
-	  }
 	  .concept {
 	    width: {{x}}px;
 	  }
@@ -45,77 +42,65 @@
 	  }
 	</style>
   
-  {% include "concept.html" with data=data1 n='one' %}
-  {% include "concept.html" with data=data2 n='two' %}
-  {% include "concept.html" with data=data3 n='three' %}
+  {% include "concept.html" with data=data1 n='one' page='concept1.html' %}
   
-  <div class="ui menu inverted">
-      <a class="active item" onclick='$(".basic.test.modal").modal("show");$(".menu").transition("slide up");'>
-        <i class="home icon"></i> Choix Concept
-      </a>
-  </div>
 
 	<div class="ui basic test large modal transition" >
 		<center>
 			<h1 class="header">Le Chantier Communicant</h1>
-	  	<h2>Présenation Phase 2</h2>
+	  	<h2>Découvrez nos concepts : </h2>
 	  </center>
-    <div class="content">
-      <div class="ui center aligned grid">
-      	<div class="five wide column">
-      		<img id="cone" class="svg" src="/static/images/cone.svg"/><br><br>
-      		Est civitatibus discrevimus ut Nino civitatibus Osdroenam civitatibus vetere hac Samosata amplis nunc civitatibus post 
-      		Hierapoli Samosata adsurgit adsurgit civitatibus inlustris post quam Hierapoli hac clementer Osdroenam quam quam quam.
-      	</div>
-      	<div class="five wide column">
-      		<img id="progess_bar" class="svg" src="/static/images/progress9.svg"/></i><br><br>
-      		Humatur Publicola Reguli et alitur erubesceret aerario absentia adultae cum subsidiis Scipionis subsidiis uxor et uxor 
-      		Valerius Reguli liberis adultae.
-      	</div>
-      	<div class="five wide column">
-      		<img id="worksign" class="svg" src="/static/images/worksign.svg"/><br><br>
-      		Conpingerentur praefectum Chilo emersit ea ut ea Olybrium unde et et negotio Olybrium ea et quos Sericus palaestrita autem 
-      		conpingerentur aruspex rapti palaestrita funditabat Asbolius vincula Maxima Campensis Olybrium tali hi Chilo hi Sericus Maxima 
-      		funditabat praefectum rapti praefectum vitamque.
-      	</div>
-      </div>
-    </div>
+
     <div class="actions">
     	<div class="ui center aligned grid">
-      	<div class="five wide column"><div class="ui orange basic inverted massive button" onclick="showc1();">Concept 1</div></div>
-      	<div class="five wide column"><div class="ui blue basic inverted massive button" onclick="showc2();">Concept 2</div></div>
-      	<div class="five wide column"><div class="ui red basic inverted massive button" onclick="showc3();">Concept 3</div></div>
+      	<div class="five wide column"><div class="button" onclick="showc('one');"
+      	    onmouseover="$(this).transition({animation  : 'bounce',queue : false });">
+      	  <img class="svg" src="/static/images/indawo.svg"/></div></div>
+      	<div class="five wide column"><div class="button" onclick="showc('two');" 
+      	    onmouseover="$(this).transition({animation  : 'bounce',queue : false });">
+      	  <img class="svg" src="/static/images/appia.svg"/></div></div>
+      	<div class="five wide column"><div class="button" onclick="showc('three');"
+      	    onmouseover="$(this).transition({animation  : 'bounce',queue : false });">
+      	  <img class="svg" src="/static/images/conect.svg" /></div></div>
       </div>
     </div>
   </div>
 	
 	<script>
 	
-	 function showc1() {
-	   $('.concept.three').hide();
-	   $('.concept.two').hide();
-	   $('.concept.one').show();
-	   $('.menu').transition('slide up');
-	 }
-	 
-	 function showc2() {
-	   $('.concept.one').hide();
-	   $('.concept.three').hide();
-	   $('.concept.two').show(); 
-	   $('.menu').transition('slide up');
-	 }
-	 
-	 function showc3() {
-	   $('.concept.one').hide();
-	   $('.concept.two').hide();
-	   $('.concept.three').show(); 
-	   $('.menu').transition('slide up');
+	 var $current = 'none';
+	
+	 function showc(concept) {
+	   
+	   if ($current != 'none') {
+	     $('.concept.'+$current+'.menu').transition('slide down');
+	   }
+	   
+	   if (concept != 'none') {
+	     $('.concept.three.content').hide();
+	     $('.concept.two.content').hide();
+	     $('.concept.one.content').hide();
+	     $('.concept.'+concept+'.content').show();
+	     $('.concept.'+concept+'.menu').transition('slide down');
+	   }
+	   else
+	   {
+	     $('.basic.test.modal')
+        .modal('setting', 'closable', false)
+        .modal('setting', 'transition', 'slide down')
+        .modal('show');
+	   }
+	   
+	   $current=concept;
 	 }
 	
 		$(function() {
 		  
-		  $('.menu').offset({ top: 10, left: {{xdiv2}} - $('.menu').width()/2 });
-		  showc1();
+		  //$('.menu').offset({ top: 10, left: {{xdiv2}} - $('.menu').width()/2 });
+		  //$('.concept.one.menu').transition('slide up');
+		  
+	   //$('.concept.three.menu').transition('slide down');
+		  //showc1();
 		  
 		/*
      * Replace all SVG images with inline SVG
@@ -143,11 +128,17 @@
           }, 'xml');
       });
       
-      $('.basic.test.modal')
-        .modal('setting', 'closable', false)
-        .modal('setting', 'transition', 'slide down')
-        .modal('show');
-		
+      $('.ui.sticky.one').sticky({context: '#contextone'});
+      $('.ui.sticky.two').sticky({context: '#contexttwo'});
+      $('.ui.sticky.three').sticky({context: '#contextthree'});
+      
+      $('.concept.one.menu').transition('slide up');
+      $('.concept.two.menu').transition('slide up');
+      $('.concept.three.menu').transition('slide up');
+      showc('one');
+      showc('none');
+      
+      
 		  $('.popup').popup();
    });
 		
