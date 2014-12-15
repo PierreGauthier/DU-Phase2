@@ -5,9 +5,12 @@
 {% block content %}
 
 	<style type="text/css">
+	  
 		html,body {  
-			/*overflow:hidden;/**/
-		 /* overflow-x: hidden;*/
+			/*overflow:hidden;/*
+		 /* overflow-x: hidden*/
+		 
+    	font-family:"Roboto";
 		}
 		#indawo path {
     	fill: #EC6C44;
@@ -23,6 +26,16 @@
 		}
 		h2 {
     	color: #aaaaaa;
+		}
+		h4 {
+		  color: #444443;
+    	font-size: 48px;
+    	font-family:"Roboto";
+		}
+		.text {
+		  color: #444443;
+		  font-size: 24px;
+    	font-family:"Roboto";
 		}
 	  .concept {
 	    width: {{x}}px;
@@ -42,8 +55,9 @@
 	  }
 	</style>
   
-  {% include "concept.html" with data=data1 n='one' page='concept1.html' %}
-  
+  {% include "concept.html" with data=data1 n='one' %}
+  {% include "concept.html" with data=data2 n='two' %}
+  {% include "concept.html" with data=data3 n='three' %}
 
 	<div class="ui basic test large modal transition" >
 		<center>
@@ -69,6 +83,10 @@
 	<script>
 	
 	 var $current = 'none';
+	 
+	 var one_lastId, one_topMenu, one_topMenuHeight, one_menuItems, one_scrollItems
+	 var two_lastId, two_topMenu, two_topMenuHeight, two_menuItems, two_scrollItems;
+	 var three_lastId, three_topMenu, three_topMenuHeight, three_menuItems, three_scrollItems;
 	
 	 function showc(concept) {
 	   
@@ -91,16 +109,35 @@
         .modal('show');
 	   }
 	   
+     $('body, html').animate({
+       scrollTop: 0
+	     }, 0);
+		     
 	   $current=concept;
+	   
+	   one_menuItems.removeClass("active");
+  	 one_menuItems.filter("[href=#one_start]").addClass("active");
+  	 two_menuItems.removeClass("active");
+  	 two_menuItems.filter("[href=#two_start]").addClass("active");
+  	 three_menuItems.removeClass("active");
+     three_menuItems.filter("[href=#three_start]").addClass("active");
 	 }
 	
+	  function grow(el) {
+		el.find('g').animate({
+			svgTransform: "scale(1)"
+			}, 250, function() {
+			});
+   };
+   
+   function ungrow(el) {
+     	el.find('g').animate({
+  				svgTransform: "scale(0.8)"
+  				}, 250, function() {
+  				});
+  	};
+  	
 		$(function() {
-		  
-		  //$('.menu').offset({ top: 10, left: {{xdiv2}} - $('.menu').width()/2 });
-		  //$('.concept.one.menu').transition('slide up');
-		  
-	   //$('.concept.three.menu').transition('slide down');
-		  //showc1();
 		  
 		/*
      * Replace all SVG images with inline SVG
@@ -135,7 +172,7 @@
       $('.concept.one.menu').transition('slide up');
       $('.concept.two.menu').transition('slide up');
       $('.concept.three.menu').transition('slide up');
-      showc('one');
+      
       showc('none');
       
       

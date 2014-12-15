@@ -1,125 +1,52 @@
 {% for e in data %}
 	<div class="ui inverted {{e.8}} info_{{e.2}}">
+		<i class="close icon"></i>
 		<div class="content">
-		  		{{e.9|safe}}
+		  		{% include e.9 %}
 		</div>
 	</div>	
 {% endfor %}
 
-<div class="pusher concept {{n}} content">
+<div id="{{n}}_start" class="pusher concept {{n}} content" style="position: absolute;">
+		
 	
-	<div class="">
-		
-		<div class="ui secondary pointing menu sticky concept {{n}} inverted" style="margin-top:0px; padding-top:0px">
-			<img src="/static/concept{{n}}_menu.png" style="position:absolute;top:-1px;width:100%"/>
-			<a class="ui item" style="margin-top:25px; margin-left:10px" onclick="showc('none');">
-		      <i class="left arrow big icon"></i>
-		  </a>
-		  <div id="{{n}}scrollmenu" class="right menu" style="margin-top:30px">
-		    <a class="ui active item" href="#pict">
-		      Pourquoi
-		    </a>
-		    <a class="ui item" href="#test">
-		      Pour qui
-		    </a>
-		    <a class="ui item" href="#11">
-		      Comment
-		    </a>
-		    <a class="ui item" href="#12">
-		      Le plot
-		    </a>
-		    <a class="ui item" href="#13">
-		        
-		    </a>
-		  </div>
-		</div>
-		
-		<div class="ui menu concept test{{n}} sticky" >
-			
-			<div class="ui grid">
-				<div class="one wide column" style="margin:8px 10px;"onclick='showc("none");'>
-					<i class="arrow left icon white big"></i>
-				</div>
-			</div>
-		</div>
-	</div>
-		
-	<div id="context{{n}}" class="concept {{n}} content" style="background-color:white;">
-		
-		<img id="pict" src="/static/concept{{n}}.svg" style="width:100%; margin-left:0%;"/>	
-		
-		<div id="test" class="ui grid concept {{n}} background">
-	{% for r in 'xxxxxxxxxxx' %}
-			<div class="row">
-		{% for c in 'xxxxxxxxxxxxxxxx' %}
-			{% if forloop.parentloop.counter0|divisibleby:2 %}
-				{% if forloop.counter0|divisibleby:2 %}
-				<div class="column" style="opacity: 0.2">
-				{% else %} 
-				<div class="column black" style="opacity: 0.1">
-				{% endif %}
-			{% else %}
-				{% if forloop.counter0|divisibleby:2 %}
-				<div class="column black" style="opacity: 0.1">
-				{% else %} 
-				<div class="column" style="opacity: 0.2">
-				{% endif %}
-			{% endif %}
-		<!--	<div class="column"><!--->
-					<span class="case{{ forloop.parentloop.counter0 }}{{ forloop.counter0 }} hide"/><br/>
-					({{ forloop.parentloop.counter0 }},{{ forloop.counter0 }})
-					<br/>
-				</div>
-		{% endfor %}
-			</div>
-	{% endfor %}
-		</div>
-				
-		<div class='elements' style=''>
-	{% for e in data %}
-		<div class="popup toggle div_{{e.2}}" 
-			onclick=" $('.info_{{e.2}}.modal').modal('setting', 'transition', 'horizontal flip').modal('show');" 
-			data-html='{{e.6}}' 
-			style='position: absolute; transform: scale({{e.4}}) rotate({{e.5}}deg);'></div>
-	{% endfor %}
-		</div>
-		
-		<div id="11"></div>
-			<div id="12"></div>
-				<div id="13"></div>
-		
-	</div>
+	{% if n == 'one' %}
+		{% include "conceptone.html" %}
+	{% elif n == 'two' %}
+		{% include "concepttwo.html" %}
+	{% elif n == 'three' %}
+		{% include "conceptthree.html" %}
+	{% endif %}
+
 	
 </div>
+	
+<script>
 
-<script type="text/javascript">
-
-	$(function(){
-		
+	$(function() {
 		
 		// Cache selectors
-		var lastId,
-		topMenu = $("#{{n}}scrollmenu"),
-		topMenuHeight = topMenu.outerHeight()+15,
+		{{n}}_topMenu = $("#{{n}}scrollmenu");
+		{{n}}_topMenuHeight = {{n}}_topMenu.outerHeight()+15;
 		
 		// All list items
-		menuItems = topMenu.find("a"),
+		{{n}}_menuItems = {{n}}_topMenu.find("a");
 		
 		// Anchors corresponding to menu items
-		scrollItems = menuItems.map(function(){
+		{{n}}_scrollItems = {{n}}_menuItems.map(function(){
 			var item = $($(this).attr("href"));
 			if (item.length) { return item; }
 			});
 		
 		
 		// Bind click handler to menu items
-		menuItems.click(function(e){
+		{{n}}_menuItems.click(function(e){
 			var href = $(this).attr("href"),
-			offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+			offsetTop = href === "#" ? 0 : $(href).offset().top-{{n}}_topMenuHeight-100;
 			$('body, html').animate({
          scrollTop: offsetTop
 		     }, 800);
-		     menuItems.removeClass("active");
+		     {{n}}_menuItems.removeClass("active");
 				 $(this).addClass("active");
 		     return false;
 			});
@@ -127,13 +54,12 @@
 		
 		// Bind to scroll
 		$(window).scroll(function(){
-			
 			// Get container scroll position
-			var fromTop = $(this).scrollTop()+topMenuHeight;
+			var fromTop = $(this).scrollTop()+{{n}}_topMenuHeight;
 			
 			// Get id of current scroll item
-			var cur = scrollItems.map(function(){
-				if ($(this).offset().top < fromTop) {
+			var cur = {{n}}_scrollItems.map(function(){
+				if ($(this).offset().top < fromTop+150) {
 					return $(this); 
 				}
 			});
@@ -142,113 +68,34 @@
 			cur = cur[cur.length-1];
 			var id = cur && cur.length ? cur[0].id : "";
 			
-			if (lastId !== id) {
-				lastId = id;
+			if ({{n}}_lastId !== id) {
+				{{n}}_lastId = id;
 				// Set/remove active class
-				menuItems.removeClass("active");
-				menuItems.filter("[href=#"+id+"]").addClass("active");
+				{{n}}_menuItems.removeClass("active");
+				{{n}}_menuItems.filter("[href=#"+id+"]").addClass("active");
 			}
-			
 			});
-			
-		});
-</script>
-	
-
-	
-	
-	
-<!--	
-
-	<div id="context{{n}}">
-		<div>
-			
-		
-	
-		
-			
-		<div class="concept {{n}} content background" style='position: absolute;'>
-			<div class="ui grid">
-		{% for r in 'xxxxxxxxxxx' %}
-					<div class="row">
-			{% for c in 'xxxxxxxxxxxxxxxx' %}
-				{% if forloop.parentloop.counter0|divisibleby:2 %}
-					{% if forloop.counter0|divisibleby:2 %}
-						<div class="column" style="opacity: 0.2">
-					{% else %} 
-						<div class="column black" style="opacity: 0.1">
-					{% endif %}
-				{% else %}
-					{% if forloop.counter0|divisibleby:2 %}
-						<div class="column black" style="opacity: 0.1">
-					{% else %} 
-						<div class="column" style="opacity: 0.2">
-					{% endif %}
-				{% endif %}
-						<!--	<div class="column"><!->
-							<span class="case{{ forloop.parentloop.counter0 }}{{ forloop.counter0 }} hide"/><br/>
-								({{ forloop.parentloop.counter0 }},{{ forloop.counter0 }})
-							<br/>
-						</div>
-			{% endfor %}
-					</div>
-		{% endfor %}
-			</div>
-			<div class='elements' style=''>
-		{% for e in data %}
-				<div class="popup toggle div_{{e.2}}" 
-					onclick=" $('.info_{{e.2}}.modal').modal('setting', 'transition', 'horizontal flip').modal('show');" 
-					data-html='{{e.6}}' 
-					style='position: absolute; transform: scale({{e.4}}) rotate({{e.5}}deg);'></div>
-		{% endfor %}
-			</div>
-			
-		</div>	
-	</div>
-	
-</div>
--->
-	
-	
-<script>
-
-function grow(el) {
-		el.find('g').animate({
-			svgTransform: "scale(1)"
-			}, 250, function() {
-			});
- };
- 
- function ungrow(el) {
-   	el.find('g').animate({
-				svgTransform: "scale(0.8)"
-				}, 250, function() {
-				});
-	};
-
-	$(function() {
 		
 {% for e in data %}
 		$.get("/static/images/{{e.3}}", function(data) {
-          	var $svg = $(data).find('svg');
-      		$svg.attr('id', 'svg_{{e.2}}');
-      		$svg.attr('class', 'popup clickabe');
+        var $svg = $(data).find('svg');
+        $svg.attr('id', 'svg_{{e.2}}');
+      	$svg.attr('class', 'popup clickabe');
 			  $svg.attr('onmouseenter','grow($(this))');
 			  $svg.attr('onmouseleave','ungrow($(this))');
 			  var $colorItem = $svg.find('.mycolor');
 			  if(typeof $colorItem.prop("tagName") === 'undefined') {
-			  	$svg.attr('fill','{{e.7}}');
-			  	$svg.attr('stroke','#000000');
+			  	//$svg.attr('fill','{{e.7}}');
+			  	//$svg.attr('stroke','#000000');
 			  } 
 			  else {
-			  	$colorItem.attr('fill','{{e.7}}');
-			  	$colorItem.attr('stroke','#000000');
+			  	//$colorItem.attr('fill','{{e.7}}');
+			  	//$colorItem.attr('stroke','#000000');
 			  }
           $('.div_{{e.2}}').append($svg);
           $svg.find('g').animate({svgTransform: "scale(0.8)"}, 1, function() {});
-          $svg.parent().offset($('.case{{e.0}}{{e.1}}').offset());
-          $svg.parent().offset($('.case{{e.0}}{{e.1}}').offset());
-				
+          $svg.parent().offset($('.concept.{{n}}.case{{e.0}}{{e.1}}').offset());
+          $svg.parent().offset($('.concept.{{n}}.case{{e.0}}{{e.1}}').offset());
 		});
 			
 		$('.info_{{e.2}}.sidebar').first()
