@@ -58,6 +58,26 @@
   {% include "concept.html" with data=data1 n='one' %}
   {% include "concept.html" with data=data2 n='two' %}
   {% include "concept.html" with data=data3 n='three' %}
+  <div id="conclusion" style="padding-left:10%; padding-right:10%;">
+    </br></br></br><center><h4>Conclusion</h4></center>
+    <p class="text"  style="font-size: 22px;">
+      Nous avons choisis de traiter nos concepts à différents niveaux, deux concepts portant sur des usagers précis, 
+      les riverains puis les automobilistes, et un autre, plus globale, s’ouvrant sur tous les usagers susceptible à un
+      moment ou un autre d’être confrontés à un chantier. 
+      Nos concepts s’ancre au maximum dans la réalité du terrain et offrent une réponse à des problèmes précis autour du manque 
+      d’informations et la nécessité de fluidifier les déplacements autour des chantiers. 
+      
+      Concernant la suite du projet, nous sommes actuellement suivi par Fabrice Martin, reponsable innovation chez l’entreprise Colas
+      pour qui chacun des concepts présente un grand interêt. Le concept 1, Appia, et selon lui celui qui à le meilleur potentiel et qui vise le plus juste. 
+      Ainsi nos idées se font entendre et s’ancrent  dans un projet de longue date nommé FURET, portant sur le chantier furtif, mené par 
+      la FNTP en association avec un certain nombre d’entreprises (Bouygues, Vinci). C’est dans ce cadre que nous devrions continuer le
+      developpement de l’un des concept, notamment avec la mise en relation avec le service de Recherche et Developpement de Bouygues. 
+      Une présentation de l’avancée de notre projet est prévue courant janvier pour les ingénieurs R&D spécialisés dans l’internet des objets.
+      Ainsi de là nous pourront idéalement travailler en équipe avec ce groupe de recherche et en arriver à un projet solide pour la phase 3. 
+    </p>
+    </br></br><center><h4 style="font-size: 36px;">Merci de votre attention</h4></center></br>
+    <center><div class='ui button basic' onclick="showc('none');">Retour</div></center>
+  </div>
 
 	<div class="ui basic test large modal transition" >
 		<center>
@@ -77,12 +97,14 @@
       	    onmouseover="$(this).transition({animation  : 'bounce',queue : false });">
       	  <img class="svg" src="/static/images/conect.svg" /></div></div>
       </div>
+      </br></br> </br></br> </br></br>
+    <center><div class='ui button basic inverted' onclick="showc('conclusion');">Conclusion</div></center>
     </div>
   </div>
 	
 	<script>
 	
-	 var $current = 'none';
+	 var $current = 'conclusion';
 	 
 	 var one_lastId, one_topMenu, one_topMenuHeight, one_menuItems, one_scrollItems
 	 var two_lastId, two_topMenu, two_topMenuHeight, two_menuItems, two_scrollItems;
@@ -90,37 +112,50 @@
 	
 	 function showc(concept) {
 	   
-	   if ($current != 'none') {
-	     $('.concept.'+$current+'.menu').transition('slide down');
-	   }
-	   
-	   if (concept != 'none') {
-	     $('.concept.three.content').hide();
+  	 if (concept == 'conclusion') {
+  	   $('.concept.three.content').hide();
 	     $('.concept.two.content').hide();
 	     $('.concept.one.content').hide();
-	     $('.concept.'+concept+'.content').show();
-	     $('.concept.'+concept+'.menu').transition('slide down');
-	   }
-	   else
-	   {
-	     $('.basic.test.modal')
-        .modal('setting', 'closable', false)
-        .modal('setting', 'transition', 'slide down')
-        .modal('show');
-	   }
-	   
-     $('body, html').animate({
-       scrollTop: 0
-	     }, 0);
-		     
-	   $current=concept;
-	   
-	   one_menuItems.removeClass("active");
-  	 one_menuItems.filter("[href=#one_start]").addClass("active");
-  	 two_menuItems.removeClass("active");
-  	 two_menuItems.filter("[href=#two_start]").addClass("active");
-  	 three_menuItems.removeClass("active");
-     three_menuItems.filter("[href=#three_start]").addClass("active");
+	     $('#conclusion').transition('slide down');
+	     
+	     $current=concept;
+  	 }
+  	 else {
+  	   
+  	   if ($current == 'conclusion') { $('#conclusion').transition('slide down'); }
+  	   
+  	   if ($current != 'none') {
+  	     $('.concept.'+$current+'.menu').transition('slide down');
+  	   }
+  	   
+  	   if (concept != 'none') {
+  	     $('.concept.three.content').hide();
+  	     $('.concept.two.content').hide();
+  	     $('.concept.one.content').hide();
+  	     $('.concept.'+concept+'.content').show();
+  	     $('.concept.'+concept+'.menu').transition('slide down');
+  	   }
+  	   else
+  	   {
+  	     $('.basic.test.modal')
+          .modal('setting', 'closable', false)
+          .modal('setting', 'transition', 'slide down')
+          .modal('show');
+  	   }
+  	   
+       $('body, html').animate({
+         scrollTop: 0
+  	     }, 0);
+  		     
+  	   $current=concept;
+  	   
+  	   one_menuItems.removeClass("active");
+    	 one_menuItems.filter("[href=#one_start]").addClass("active");
+    	 two_menuItems.removeClass("active");
+    	 two_menuItems.filter("[href=#two_start]").addClass("active");
+    	 three_menuItems.removeClass("active");
+       three_menuItems.filter("[href=#three_start]").addClass("active");
+  	 }
 	 }
 	
 	  function grow(el) {
